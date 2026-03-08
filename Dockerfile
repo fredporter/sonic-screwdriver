@@ -20,5 +20,5 @@ COPY . /sonic
 RUN pip3 install --no-cache-dir --break-system-packages \
     pyyaml jsonschema
 
-ENTRYPOINT ["python3", "core/sonic_cli.py"]
+ENTRYPOINT ["python3", "installers/usb/cli.py"]
 CMD ["--help"]

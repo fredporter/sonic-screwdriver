@@ -1,11 +1,11 @@
-# Sonic Screwdriver v1.5 Contract
+# Sonic Screwdriver Contract
 
 Status: Active
-Updated: 2026-03-03
+Updated: 2026-03-07
 
 ## Purpose
 
-Define Sonic Screwdriver as the v1.5 standalone provisioning layer for
+Define Sonic Screwdriver as the current standalone provisioning layer for
 profile-aware installs, with explicit alignment to the canonical `uHOME`
 runtime and Wizard-managed networking.
 
@@ -13,7 +13,7 @@ Key goals:
 
 - provide a standalone, decoupleable provisioning utility
 - materialize profile-aware install layouts and staged bundles
-- preserve `uHOME Server` and `uHOME TV Node` rollout support for v1.5
+- preserve `uHOME Server` and `uHOME TV Node` rollout support in the current release lane
 - support thin-GUI and Steam-console presentation packaging for `uHOME`
 - hand off managed networking and control-plane behavior to Wizard
 - keep device database and launch-profile data deterministic
@@ -29,14 +29,14 @@ Sonic Screwdriver should run in isolation from uDOS:
 
 ---
 
-## v1.5 install lanes
+## Install lanes
 
-Sonic provides two active install lanes for v1.5:
+Sonic provides two active install lanes:
 
 - standalone bundle install
 - USB or image install
 
-The standalone bundle install is the canonical `uHOME Server` lane for v1.5.
+The standalone bundle install is the canonical `uHOME Server` lane.
 The USB or image lane remains valid for profile-aware node rollout, including
 `uHOME TV Node`.
 
@@ -52,7 +52,9 @@ The USB or image lane uses:
 
 - `config/sonic-layout.json`
 - `config/sonic-manifest.json.example`
-- `core/sonic_cli.py`
+- `memory/sonic/`
+- `distribution/`
+- `installers/usb/cli.py`
 - `scripts/partition-layout.sh`
 - `scripts/apply-payloads-v2.sh`
 - `scripts/sonic-stick.sh`
@@ -73,9 +75,9 @@ Rules:
 
 The bundle lane is backed by:
 
-- `sonic/core/uhome_bundle.py`
-- `sonic/core/uhome_installer.py`
-- `sonic/core/uhome_preflight.py`
+- `installers/bundles/uhome/bundle.py`
+- `installers/bundles/uhome/installer.py`
+- `installers/bundles/uhome/preflight.py`
 
 Bundle responsibilities:
 
@@ -96,7 +98,7 @@ Current canonical component family for `uHOME` bundle installs:
 
 Sonic provisions nodes. Wizard owns ongoing network-aware control.
 
-For v1.5:
+For the current release lane:
 
 - Sonic may bootstrap a `uHOME` node for LAN use or later enrollment
 - Wizard owns `/api/beacon/*` and `/api/ha/*`
@@ -107,7 +109,7 @@ For v1.5:
 
 ## Device and launch-profile data
 
-Sonic device and launch-profile data remain valid v1.5 inputs for:
+Sonic device and launch-profile data remain valid inputs for:
 
 - hardware-aware install guidance
 - profile selection
@@ -134,7 +136,6 @@ contracts.
 
 ## Related documents
 
-- `sonic/docs/integration-spec.md`
-- `docs/specs/UHOME-v1.5.md`
-- `docs/decisions/SONIC-DB-SPEC-GPU-PROFILES.md`
-- `wizard/docs/BEACON-IMPLEMENTATION.md`
+- `docs/integration-spec.md`
+- external current `uHOME` runtime spec
+- Wizard beacon implementation docs in their owning repo

@@ -51,19 +51,19 @@
     ]
   },
   "payloads": {
-    "base_dir": "payloads",
+    "base_dir": "memory/sonic/artifacts/payloads",
     "validate": true,
     "checksum_file": "payloads.sha256",
     "partitions": [
       {
         "label": "uDOS_BOOT",
-        "source_dir": "payloads/efi",
+        "source_dir": "efi",
         "mode": "rsync",
         "validate_checksums": true
       },
       {
         "label": "uDOS_CORE",
-        "source_dir": "payloads/udos-core",
+        "source_dir": "udos-core",
         "mode": "rsync",
         "validate_checksums": true
       }
@@ -71,7 +71,7 @@
   },
   "windows": {
     "mode": "wim",
-    "iso_path": "payloads/windows/windows10-ltsc.iso",
+    "iso_path": "memory/sonic/artifacts/payloads/windows/windows10-ltsc.iso",
     "boot_mode": "uefi"
   },
   "wizard": {

@@ -1,15 +1,19 @@
-"""Plan and emit Sonic Screwdriver operations manifest."""
+"""Plan and emit Sonic Screwdriver USB installer manifests."""
 
 import argparse
+import sys
 from pathlib import Path
 from typing import Dict, Optional
 
+if __package__ in {None, ""}:  # pragma: no cover - direct script execution
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
 try:
     from .manifest import default_manifest, write_manifest
-    from .os_limits import support_message, is_supported
+    from core.os_limits import support_message, is_supported
 except ImportError:  # pragma: no cover - fallback for direct execution
-    from manifest import default_manifest, write_manifest
-    from os_limits import support_message, is_supported
+    from installers.usb.manifest import default_manifest, write_manifest
+    from core.os_limits import support_message, is_supported
 
 
 def build_plan(args: argparse.Namespace) -> Dict:
@@ -46,16 +50,16 @@ def write_plan(
 
 
 def parse_args(argv: Optional[list] = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Sonic Screwdriver planner")
-    parser.add_argument("--repo-root", default=str(Path(__file__).resolve().parents[1]))
+    parser = argparse.ArgumentParser(description="Sonic Screwdriver USB planner")
+    parser.add_argument("--repo-root", default=str(Path(__file__).resolve().parents[2]))
     parser.add_argument("--usb-device", default="/dev/sdb")
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--out", default="config/sonic-manifest.json")
+    parser.add_argument("--out", default="memory/sonic/sonic-manifest.json")
     parser.add_argument("--layout-file", default="config/sonic-layout.json")
     parser.add_argument(
         "--payloads-dir",
         default=None,
-        help="Override payloads root directory (defaults to repo_root/payloads)",
+        help="Override payloads root directory (defaults to repo_root/memory/sonic/artifacts/payloads)",
     )
     parser.add_argument(
         "--format-mode",

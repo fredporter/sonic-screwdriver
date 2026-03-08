@@ -4,10 +4,14 @@ sonic/ --part local only
 │   └── sonic-manifest.json.example
 ├── core/
 │   ├── __init__.py
-│   ├── manifest.py
 │   ├── os_limits.py
-│   ├── plan.py
-│   └── sonic_cli.py
+│   ├── sonic_api.py
+│   ├── sonic_mcp.py
+│   └── sonic_service.py
+├── installers/
+│   ├── bundles/
+│   │   └── uhome/
+│   └── usb/
 ├── datasets/
 │   ├── README.md
 │   ├── sonic-devices.schema.json

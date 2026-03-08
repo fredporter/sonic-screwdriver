@@ -1,16 +1,15 @@
 {
-  "$schema": "../core/version.schema.json",
   "component": "sonic",
   "name": "uDOS Sonic Screwdriver",
   "version": {
     "major": 1,
-    "minor": 3,
-    "patch": 1
+    "minor": 5,
+    "patch": 2
   },
-  "display": "v1.3.1",
+  "display": "v1.5.2",
   "channel": "alpha",
-  "released": "2026-02-05",
-  "description": "Ventoy-free Sonic pipeline with native partition/payload flow",
+  "released": "2026-03-07",
+  "description": "Standalone Sonic installer domains with native USB and uHOME bundle flows",
   "changelog": "CHANGELOG.md",
   "metadata": {
     "requires_root": true,

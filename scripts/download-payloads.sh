@@ -9,14 +9,16 @@
 set -euo pipefail
 
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-ISOS_DIR="$BASE_DIR/ISOS"
-RASPI_DIR="$BASE_DIR/RaspberryPi"
+ARTIFACTS_DIR="$BASE_DIR/memory/sonic/artifacts/downloads"
+ISOS_DIR="$ARTIFACTS_DIR/isos"
+RASPI_DIR="$ARTIFACTS_DIR/raspberrypi"
 
 # Create directories
 mkdir -p "$ISOS_DIR/Minimal" "$ISOS_DIR/Rescue" "$ISOS_DIR/Ubuntu" "$RASPI_DIR"
 
 echo "Sonic Stick payload download starting"
 echo "Base directory: $BASE_DIR"
+echo "Artifact directory: $ARTIFACTS_DIR"
 echo ""
 
 # Format: "destination|url"
@@ -60,7 +62,9 @@ echo "All downloads complete!"
 echo "==================================="
 echo ""
 echo "Next steps:"
-echo "  1. Generate manifest: python3 core/sonic_cli.py plan --usb-device /dev/sdX"
-echo "  2. Run: sudo bash scripts/sonic-stick.sh --manifest config/sonic-manifest.json"
-echo "  3. Use --dry-run first for safety"
+echo "  1. Review downloads under memory/sonic/artifacts/downloads/"
+echo "  2. Stage build payloads under memory/sonic/artifacts/payloads/"
+echo "  3. Generate manifest: python3 installers/usb/cli.py plan --usb-device /dev/sdX --out memory/sonic/sonic-manifest.json"
+echo "  4. Run: sudo bash scripts/sonic-stick.sh --manifest memory/sonic/sonic-manifest.json"
+echo "  5. Use --dry-run first for safety"
 echo ""

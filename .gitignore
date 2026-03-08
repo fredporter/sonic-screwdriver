@@ -1,11 +1,29 @@
+# Sonic runtime state (local-only)
+memory/*
+!memory/README.md
+!memory/sonic/
+memory/sonic/*
+!memory/sonic/README.md
+
+# Local bolt-ons and installed integrations
+library/*
+!library/README.md
+!library/sonic/
+library/sonic/*
+!library/sonic/README.md
+
+# Legacy local asset roots kept ignored for compatibility
 ISOS/
 RaspberryPi/
 TOOLS/
+LOGS/
+
+# Large local media and archives
 *.iso
 *.img.xz
 *.tar.gz
 *.DS_Store
 **/.archive/
 ISOS/.archive/
-LOGS/
+
 config/sonic-manifest.json

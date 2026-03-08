@@ -1,12 +1,12 @@
 # Contributing to Sonic
 
-Sonic is the uDOS bootable USB builder and entry-point environment.
+Sonic is the standalone bootable USB builder and provisioning environment for
+uDOS-aligned media and install workflows.
 
-Please follow the main uDOS contribution process:
-- `../docs/CONTRIBUTION-PROCESS.md` (when working in the monorepo)
-
-If you are viewing this repo standalone, open an issue or PR against the main uDOS repository.
+Use this repository for issues and pull requests when working on Sonic as a
+standalone project.
 
 ## Notes
-- Keep changes aligned with the current uDOS release manifest (`releases/v1.4.3.yml`).
-- Document any breaking behavior in `/sonic/README.md`.
+- Keep standalone docs and examples rooted at this repository.
+- Document any breaking behavior in `README.md` and the relevant files under
+  `docs/`.

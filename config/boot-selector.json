@@ -1,41 +1,40 @@
 {
   "$schema": "../docs/schemas/boot-selector.schema.json",
   "name": "Sonic Boot Selector",
-  "version": "1.0.0",
-  "description": "Boot target configuration for Sonic Screwdriver / Sonic Stick",
+  "version": "1.1.0",
+  "description": "Boot target configuration for Sonic dual-boot controller-first surfaces",
   "targets": [
     {
-      "id": "udos-alpine",
-      "name": "uDOS Alpine Core",
-      "description": "Alpine Linux TUI with thin single full-screen GUI layer",
+      "id": "uhome-steam-console",
+      "name": "uHOME Steam Server",
+      "description": "Linux-side uHOME server surface with Steam Big Picture shell and controller-first modules",
       "type": "linux",
-      "distribution": "alpine",
-      "tier": "tui",
-      "features": ["offline-first", "diskless", "persistent-overlay"],
-      "min_disk_mb": 512,
-      "min_ram_mb": 256
+      "distribution": "alpine-udos",
+      "tier": "steam-console",
+      "features": ["controller-first", "steam-console", "uhome-server", "jellyfin-dvr"],
+      "min_disk_mb": 20480,
+      "min_ram_mb": 8192
     },
     {
-      "id": "udos-ubuntu-wizard",
-      "name": "Ubuntu 22 + Wizard Server",
-      "description": "Full Ubuntu server with Wizard and browser-based GUI",
-      "type": "linux",
-      "distribution": "ubuntu",
-      "tier": "full",
-      "features": ["wizard-server", "browser-gui", "networking"],
-      "min_disk_mb": 8192,
-      "min_ram_mb": 2048
-    },
-    {
-      "id": "udos-windows-entertainment",
-      "name": "Windows 10 Media & Entertainment",
-      "description": "uDOS-configured Windows 10 media and entertainment system",
+      "id": "windows10-gaming-console",
+      "name": "Windows 10 Gaming",
+      "description": "Windows 10 LTSC gaming surface with Playnite/Steam controller navigation",
       "type": "windows",
       "distribution": "windows10-ltsc",
-      "tier": "entertainment",
-      "features": ["controller-first", "media-mode", "game-mode"],
-      "min_disk_mb": 32768,
-      "min_ram_mb": 4096
+      "tier": "gaming-console",
+      "features": ["controller-first", "playnite", "steam", "xinput"],
+      "min_disk_mb": 40960,
+      "min_ram_mb": 8192
+    }
+  ],
+  "profiles": [
+    {
+      "id": "uhome-steam-windows10-dualboot",
+      "name": "uHOME + Windows 10 Dual Boot",
+      "description": "Build a disk with a uHOME Steam server surface and a Windows 10 gaming surface.",
+      "default_target": "uhome-steam-console",
+      "targets": ["uhome-steam-console", "windows10-gaming-console"],
+      "controller_profiles": ["steam-xinput-hybrid", "windows-xinput-console"]
     }
   ],
   "sonic_db": {

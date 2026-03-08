@@ -33,8 +33,8 @@ init_logging() {
     done
   fi
 
-  # Fallback to repo LOGS directory
-  LOG_ROOT="${LOG_ROOT:-${BASE_DIR:-${__LOG_REPO_ROOT}}/LOGS}"
+  # Fallback to local runtime logs inside memory/sonic.
+  LOG_ROOT="${LOG_ROOT:-${BASE_DIR:-${__LOG_REPO_ROOT}}/memory/sonic/logs}"
   
   # Try to create LOG_ROOT if it doesn't exist
   if [[ ! -d "$LOG_ROOT" ]]; then

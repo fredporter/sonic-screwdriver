@@ -408,9 +408,10 @@ def verify_media_inputs(
     manifest_path: Path | None = None,
     flash_pack: str | None = None,
 ) -> dict[str, Any]:
-    payloads_root = sonic_root / "payloads"
+    runtime_root = sonic_root / "memory" / "sonic"
+    payloads_root = runtime_root / "artifacts" / "payloads"
     dataset_root = sonic_root / "datasets"
-    memory_root = sonic_root.parent / "memory" / "sonic"
+    memory_root = runtime_root
     legacy_db = memory_root / "sonic-devices.db"
     seed_db = memory_root / "seed" / "sonic-devices.seed.db"
     user_db = memory_root / "user" / "sonic-devices.user.db"
@@ -607,6 +608,7 @@ def verify_media_inputs(
     if manifest_path:
         manifest_result = verify_manifest_path(manifest_path)
         repo_root = Path(str(manifest_result.get("paths", {}).get("repo_root") or sonic_root))
+        payloads_root = Path(str(manifest_result.get("paths", {}).get("payload_dir") or payloads_root))
         manifest_checks = []
         for name, rel_path in {
             "alpine": payloads_root / "udos" / "udos.squashfs",

@@ -23,7 +23,7 @@ Catalog entries may also point to open-box Obsidian-style Markdown templates for
 3) Compile SQLite:
 
 ```bash
-sqlite3 memory/sonic/seed/sonic-devices.seed.db < sonic/datasets/sonic-devices.sql
+sqlite3 memory/sonic/seed/sonic-devices.seed.db < datasets/sonic-devices.sql
 ```
 
 Runtime split:

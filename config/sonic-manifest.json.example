@@ -2,22 +2,138 @@
   "usb_device": "/dev/sdb",
   "boot_mode": "uefi-native",
   "repo_root": "/path/to/sonic",
-  "payload_dir": "/path/to/sonic/payloads",
-  "iso_dir": "/path/to/sonic/ISOS",
+  "payload_dir": "/path/to/sonic/memory/sonic/artifacts/payloads",
+  "iso_dir": "/path/to/sonic/memory/sonic/artifacts/images",
   "flash_label": "FLASH",
   "sonic_label": "SONIC",
   "esp_label": "ESP",
   "dry_run": false,
   "format_mode": "full",
   "auto_scale": false,
+  "install_profile": "uhome-steam-windows10-dualboot",
+  "profile_mode": "dual-boot",
+  "controller_mappings": [
+    {
+      "id": "steam-xinput-hybrid",
+      "driver": "steam-input",
+      "profile": "steam-console",
+      "buttons": {
+        "a": "select",
+        "b": "back",
+        "x": "context",
+        "y": "search",
+        "lb": "previous-module",
+        "rb": "next-module",
+        "guide": "open-system-shell"
+      },
+      "notes": "Primary mapping for the uHOME Steam-side server surface."
+    },
+    {
+      "id": "windows-xinput-console",
+      "driver": "xinput",
+      "profile": "windows-console",
+      "buttons": {
+        "a": "select",
+        "b": "back",
+        "x": "actions",
+        "y": "launcher",
+        "lb": "previous-tab",
+        "rb": "next-tab",
+        "guide": "open-overlay"
+      },
+      "notes": "Primary mapping for the Windows 10 gaming shell."
+    }
+  ],
+  "navigation_modules": [
+    {
+      "id": "uhome-home",
+      "name": "uHOME Home",
+      "shell": "steam-big-picture",
+      "entrypoint": "/opt/uhome/bin/uhome-console --module home",
+      "controller_mapping": "steam-xinput-hybrid",
+      "source_path": "distribution/launchers/uhome/uhome-console.sh",
+      "install_target": "/opt/uhome/bin/uhome-console",
+      "mode": "console",
+      "components": ["uhome-kiosk", "jellyfin", "steam"],
+      "description": "Primary controller-first home screen for the uHOME Steam server lane."
+    },
+    {
+      "id": "windows-home",
+      "name": "Windows Home",
+      "shell": "playnite-fullscreen",
+      "entrypoint": "C:\\ProgramData\\Sonic\\Navigation\\WindowsHome.cmd",
+      "controller_mapping": "windows-xinput-console",
+      "source_path": "distribution/launchers/windows/WindowsHome.cmd",
+      "install_target": "C:\\ProgramData\\Sonic\\Navigation\\WindowsHome.cmd",
+      "mode": "console",
+      "components": ["playnite", "steam", "epic"],
+      "description": "Primary gaming launcher shell on the Windows side."
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "uhome-steam-server",
+      "name": "uHOME Steam Server",
+      "os": "linux",
+      "kind": "uhome-server",
+      "boot_target": "uhome-steam-console",
+      "controller_mapping": "steam-xinput-hybrid",
+      "partition_refs": ["udos_ro", "udos_rw", "uhome", "media", "cache"],
+      "navigation_modules": ["uhome-home"],
+      "default_shell": "steam-big-picture",
+      "description": "Linux-side uHOME server surface with a controller-first Steam shell.",
+      "features": ["controller-first", "steam-console", "jellyfin-dvr", "media-server"]
+    },
+    {
+      "id": "windows10-gaming",
+      "name": "Windows 10 Gaming Surface",
+      "os": "windows",
+      "kind": "gaming-console",
+      "boot_target": "windows10-gaming-console",
+      "controller_mapping": "windows-xinput-console",
+      "partition_refs": ["win10", "media"],
+      "navigation_modules": ["windows-home"],
+      "default_shell": "playnite-fullscreen",
+      "description": "Windows 10 gaming shell with controller-first modular navigation.",
+      "features": ["controller-first", "gaming", "launcher-shell", "windows10-ltsc"]
+    }
+  ],
+  "boot_targets": [
+    {
+      "id": "uhome-steam-console",
+      "name": "uHOME Steam Server",
+      "surface_id": "uhome-steam-server",
+      "os": "linux",
+      "bootloader": "grub",
+      "chain": "linux-efi",
+      "default": true,
+      "description": "Default Linux-side boot target for the uHOME Steam server surface.",
+      "controller_mapping": "steam-xinput-hybrid",
+      "entry_partition": "esp",
+      "features": ["default", "steam-console", "uhome-server"]
+    },
+    {
+      "id": "windows10-gaming-console",
+      "name": "Windows 10 Gaming",
+      "surface_id": "windows10-gaming",
+      "os": "windows",
+      "bootloader": "grub",
+      "chain": "windows-efi",
+      "default": false,
+      "description": "Chainloaded Windows 10 target for the gaming surface.",
+      "controller_mapping": "windows-xinput-console",
+      "entry_partition": "win10",
+      "features": ["chainload", "gaming", "xinput"]
+    }
+  ],
   "partitions": [
-    { "name": "esp", "label": "ESP", "fs": "fat32", "size_gb": 0.5, "flags": ["boot", "esp"], "format": true, "role": "efi", "payload_dir": "payloads/efi" },
-    { "name": "udos_ro", "label": "UDOS_RO", "fs": "squashfs", "size_gb": 8, "image": "payloads/udos/udos.squashfs", "format": true, "role": "udos" },
-    { "name": "udos_rw", "label": "UDOS_RW", "fs": "ext4", "size_gb": 8, "format": true, "mount": "/mnt/udos", "role": "udos", "scalable": true, "min_size_gb": 4, "payload_dir": "payloads/udos/rw" },
+    { "name": "esp", "label": "ESP", "fs": "fat32", "size_gb": 0.5, "flags": ["boot", "esp"], "format": true, "role": "efi", "payload_dir": "efi" },
+    { "name": "udos_ro", "label": "UDOS_RO", "fs": "squashfs", "size_gb": 8, "image": "udos/udos.squashfs", "format": true, "role": "udos" },
+    { "name": "udos_rw", "label": "UDOS_RW", "fs": "ext4", "size_gb": 8, "format": true, "mount": "/mnt/udos", "role": "udos", "scalable": true, "min_size_gb": 4, "payload_dir": "udos/rw" },
     { "name": "swap", "label": "SWAP", "fs": "swap", "size_gb": 8, "format": true, "role": "swap" },
-    { "name": "wizard", "label": "WIZARD", "fs": "ext4", "size_gb": 20, "format": true, "mount": "/mnt/wizard", "role": "wizard", "payload_dir": "payloads/wizard" },
-    { "name": "win10", "label": "WIN10", "fs": "ntfs", "size_gb": 48, "format": true, "role": "windows", "scalable": true, "min_size_gb": 32, "payload_dir": "payloads/windows" },
-    { "name": "media", "label": "MEDIA", "fs": "exfat", "size_gb": 28, "format": true, "mount": "/mnt/media", "role": "media", "scalable": true, "min_size_gb": 12, "payload_dir": "payloads/media" },
-    { "name": "cache", "label": "CACHE", "fs": "ext4", "remainder": true, "format": true, "mount": "/mnt/cache", "role": "cache", "scalable": true, "min_size_gb": 4, "payload_dir": "payloads/cache" }
+    { "name": "uhome", "label": "UHOME", "fs": "ext4", "size_gb": 20, "format": true, "mount": "/mnt/uhome", "role": "uhome", "scalable": true, "min_size_gb": 12, "payload_dir": "uhome/system" },
+    { "name": "win10", "label": "WIN10", "fs": "ntfs", "size_gb": 64, "format": true, "role": "windows", "scalable": true, "min_size_gb": 40, "payload_dir": "windows" },
+    { "name": "media", "label": "MEDIA", "fs": "exfat", "size_gb": 32, "format": true, "mount": "/mnt/media", "role": "media", "scalable": true, "min_size_gb": 16, "payload_dir": "media" },
+    { "name": "cache", "label": "CACHE", "fs": "ext4", "remainder": true, "format": true, "mount": "/mnt/cache", "role": "cache", "scalable": true, "min_size_gb": 8, "payload_dir": "cache" }
   ]
 }

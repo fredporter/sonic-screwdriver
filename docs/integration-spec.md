@@ -1,16 +1,16 @@
-# Sonic Integration Spec - v1.5 Device Catalog and uHOME Install Lanes
+# Sonic Integration Spec
 
 Status: Active
-Updated: 2026-03-03
+Updated: 2026-03-07
 
-This document aligns Sonic's public integration story to the active v1.5
-`uHOME` scope in `docs/specs/UHOME-v1.5.md`.
+This document aligns Sonic's public integration story to the active
+`uHOME` scope maintained outside this repository.
 
-For v1.5, Sonic's canonical `uHOME` alignment is:
+Sonic's canonical `uHOME` alignment is:
 
 - a tested standalone bundle installer for `uHOME Server`
-- a bounded USB or image lane that can materialize either `uHOME Server` or
-  `uHOME TV Node`
+- a bounded USB or image lane that can materialize either `uHOME Server`,
+  `uHOME TV Node`, or the current dual-boot `uHOME Steam Server + Windows 10 Gaming` disk
 - node bootstrap that can hand off to Wizard-managed home-node and beacon
   networking
 - packaging that may ship `uHOME` with thin GUI, Steam-console UX, or both
@@ -18,20 +18,24 @@ For v1.5, Sonic's canonical `uHOME` alignment is:
   defining a separate `uHOME` runtime
 
 Older Sonic hybrid-console or media-launcher briefs may remain in the repo as
-historical exploration, but they are not the active v1.5 source of truth.
+historical exploration, but they are not the active source of truth.
 
 ## 1. Device Database Contract
 
 Sonic Screwdriver publishes its curated device catalog via `wizard.routes.sonic_plugin_routes`. Any Wizard/Sonic bolt-on can consume the same SQLite + Schema artifacts described here and bundle them for CLI/GUI consumers. The Wizard API routes keep the catalog discoverable both from the TUI (`PLUGIN list`) and from remote automation by exposing the same contract documented here.
 
 ### Storage
-- Seed catalog sources: `sonic/datasets/`
+- Seed catalog sources: `datasets/`
+- Tracked distribution descriptors: `distribution/`
 - Seed runtime DB: `memory/sonic/seed/sonic-devices.seed.db`
 - User runtime DB: `memory/sonic/user/sonic-devices.user.db`
 - Legacy compatibility mirror: `memory/sonic/sonic-devices.db`
-- Schema: `sonic/datasets/sonic-devices.schema.json`
-- Markdown reference table: `sonic/datasets/sonic-devices.table.md`
-- Seed rebuild source: `sonic/datasets/sonic-devices.sql`
+- Local payload library: `memory/sonic/artifacts/payloads/`
+- Local download/artifact staging: `memory/sonic/artifacts/`
+- Local bolt-ons: `library/sonic/`
+- Schema: `datasets/sonic-devices.schema.json`
+- Markdown reference table: `datasets/sonic-devices.table.md`
+- Seed rebuild source: `datasets/sonic-devices.sql`
 - Datasets folder also hosts `sonic-devices.csv` for bulk editing before rebuilding.
 
 Normal-user contract:
@@ -66,42 +70,55 @@ Normal-user contract:
 - `GET /api/sonic/db/export` – DB export alias.
 - `POST /api/sonic/bootstrap/current` – register the current machine in the local user catalog.
 
+Current standalone Sonic runtime in this repository provides the following implemented surfaces:
+- `GET /api/sonic/health`
+- `GET /api/sonic/gui/summary`
+- `GET /api/sonic/devices`
+- `GET /api/sonic/db/status`
+- `POST /api/sonic/db/rebuild`
+- `GET /api/sonic/db/export`
+- `GET /api/sonic/manifest/verify`
+- `POST /api/sonic/plan`
+
+Wizard-compatible aliases are also exposed under `/api/platform/sonic/*` for the routes above where applicable.
+
 Consumers should respect the `methods` array to know whether a device supports
 `sonic_usb`, native UEFI boot, or additional profile-specific install methods.
 Template fields should be treated as open-box Markdown references, not embedded opaque payloads.
 
 ### Syncing Plan
 1. Build tool (`wizard.routes.sonic_plugin_routes`) exports `devices` so dashboards show current catalog.
-2. Seed rebuild refreshes `memory/sonic/seed/sonic-devices.seed.db` from `sonic/datasets/sonic-devices.sql`.
+2. Seed rebuild refreshes `memory/sonic/seed/sonic-devices.seed.db` from `datasets/sonic-devices.sql`.
 3. User imports and current-machine bootstrap write only to `memory/sonic/user/sonic-devices.user.db`.
 4. UI/automation can poll `/api/sonic/health` or `/api/sonic/sync/status` and show quick instructions when the seed catalog is stale or the current machine has not yet been registered.
 
 ## 2. USB Builder API (Plan + Run)
 
-Sonic exposes two CLI verbs via `core/sonic_cli.py` plus helper scripts for partitioning/payloads. Wizard bolt-ons can wrap or invoke these commands over SSH/CLI.
+Sonic exposes two CLI verbs via `installers/usb/cli.py` plus helper scripts for partitioning/payloads. Wizard bolt-ons can wrap or invoke these commands over SSH/CLI.
 
 ### Commands
 ```bash
-python3 core/sonic_cli.py plan \
+python3 installers/usb/cli.py plan \
   --usb-device /dev/sdX \
   --layout-file config/sonic-layout.json \
   --out memory/sonic/sonic-manifest.json
 
-python3 core/sonic_cli.py run \
+python3 installers/usb/cli.py run \
   --manifest memory/sonic/sonic-manifest.json \
   [--dry-run]
 ```
 
-### Manifest expectations (`core/plan.py`)
+### Manifest expectations (`installers/usb/plan.py`)
 - `usb_device` – raw block device.
 - `layout` – `config/sonic-layout.json` describing partition labels/payloads.
-- `payloads` mapping partitions to directories within `payloads/`.
+- `payload_dir` – local payload library root, defaulting to `memory/sonic/artifacts/payloads/`.
+- partition `payload_dir` and `image` entries resolve relative to the manifest payload root.
 - `windows_mode` – `install` or `wtg`.
 - `device_profile` – matches `devices.id` from sonic DB to set `windows10_boot`, `media_mode`.
 
 Primary post-plan steps:
 1. `scripts/partition-layout.sh` uses manifest partitions to set GPT entries, format them, and create labels.
-2. `scripts/apply-payloads-v2.sh` mounts partitions and copies from `payloads/`.
+2. `scripts/apply-payloads-v2.sh` mounts partitions and copies from the local payload library under `memory/sonic/artifacts/payloads/` unless overridden.
 3. `scripts/sonic-stick.sh` (run phase) executes payload application, installs grub/bootloaders, and finalizes Windows payloads (ISO extraction or WTG injection).
 
 Wizard bolt-ons should treat the plan/run APIs as a two-phase contract: the
@@ -112,18 +129,18 @@ plan. Logging from both CLI commands should be captured in
 `memory/sonic/sonic-flash.log` so `PLUGIN` or `WIZARD` pages can surface
 execution history.
 
-### v1.5 `uHOME` alignment for USB and image builds
+### Current `uHOME` alignment for USB and image builds
 
-For v1.5, any `uHOME`-aligned USB or image build must:
+Any `uHOME`-aligned USB or image build must:
 
 1. resolve to one deployment role:
    - `uHOME Server`
    - `uHOME TV Node`
-2. stay consistent with `docs/specs/UHOME-v1.5.md`
+2. stay consistent with the current external `uHOME` runtime spec
 3. support node bootstrap only up to the point of handing networking control to
    Wizard-owned surfaces
-4. avoid claiming mandatory dual-boot gaming or Windows media-launcher behavior
-   unless backed by active implementation and acceptance evidence
+4. only claim dual-boot gaming or Windows media-launcher behavior when the
+   manifest explicitly carries the matching boot targets, surfaces, and controller mappings
 5. reuse the same component and config concepts as the standalone bundle lane
    where practical
 6. support packaging of thin GUI, Steam-console UX, or both as presentation
@@ -131,8 +148,18 @@ For v1.5, any `uHOME`-aligned USB or image build must:
 
 ### Wizard networking handoff
 
-Sonic's v1.5 role is to prepare a deployable node. After install, node
+Sonic's role is to prepare a deployable node. After install, node
 networking and managed control must hand off to Wizard-owned services.
+
+## MCP facade
+
+Sonic may expose an MCP facade, but MCP is not the canonical runtime protocol.
+The intended layering is:
+- shared Sonic service layer owns business logic
+- HTTP API remains the primary control plane for browser UI and service integration
+- MCP wraps the same service calls for AI/operator tooling
+
+This keeps the browser GUI, local automation, and agent-facing tooling consistent without duplicating core install logic.
 
 For `uHOME` this includes:
 
@@ -149,9 +176,9 @@ surface and is the canonical Sonic lane for `uHOME Server`.
 
 Authoritative code:
 
-- `sonic/core/uhome_bundle.py`
-- `sonic/core/uhome_installer.py`
-- `sonic/core/uhome_preflight.py`
+- `installers/bundles/uhome/bundle.py`
+- `installers/bundles/uhome/installer.py`
+- `installers/bundles/uhome/preflight.py`
 
 Install contract summary:
 
@@ -224,9 +251,9 @@ Current `uHOME`-relevant Wizard surfaces:
 - `uhome.*` command dispatch for tuner, DVR, ad-processing, and playback
 - optional config-controlled bridge enablement
 
-This remains optional for v1.5 and does not define install validity by itself.
+This remains optional and does not define install validity by itself.
 
-## 7. Sonic scope guardrails for v1.5
+## 7. Sonic scope guardrails
 
 To keep the active scope stable:
 
@@ -242,8 +269,5 @@ To keep the active scope stable:
 
 ## 8. Related documents
 
-- `docs/specs/UHOME-v1.5.md`
-- `docs/decisions/uHOME-spec.md`
-- `docs/decisions/SONIC-DB-SPEC-GPU-PROFILES.md`
-- `docs/decisions/HOME-ASSISTANT-BRIDGE.md`
-- `wizard/docs/BEACON-IMPLEMENTATION.md`
+- external current `uHOME` runtime spec
+- Wizard beacon and Home Assistant implementation docs in their owning repo

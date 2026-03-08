@@ -42,8 +42,8 @@ INSERT INTO devices (
   'unknown', 'unknown', 'unknown', 'none', 'unknown', 'unknown',
   '["UEFI"]', 'Placeholder row for schema validation only.', '[]', '2026-01-25',
   'none', 'none', 'none',
-  'core/framework/seed/bank/templates/submissions/SONIC-DEVICE-SETTINGS-template.md',
-  'core/framework/seed/bank/templates/submissions/SONIC-DEVICE-INSTALLERS-template.md',
-  'core/framework/seed/bank/templates/submissions/SONIC-DEVICE-CONTAINERS-template.md',
-  'core/framework/seed/bank/templates/submissions/SONIC-DEVICE-DRIVERS-template.md'
+  'distribution/templates/submissions/sonic-device-settings-template.md',
+  'distribution/templates/submissions/sonic-device-installers-template.md',
+  'distribution/templates/submissions/sonic-device-containers-template.md',
+  'distribution/templates/submissions/sonic-device-drivers-template.md'
 );

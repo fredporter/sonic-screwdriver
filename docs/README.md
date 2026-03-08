@@ -1,9 +1,7 @@
 # Sonic Docs
 
 ## Current
-- ../../docs/releases/v1.4.3-release-notes.md (canonical monorepo consolidated release notes)
-- specs/sonic-screwdriver-v1.0.1.md
-- specs/sonic-screwdriver-v1.1.0.md
+- specs/sonic-screwdriver.md
 - integration-spec.md
 - specs/uDOS_Xbox_Entertainment_Spec.md
 - specs/uDOS-Gameplay-Anchors-v1.3-Spec.md
@@ -11,18 +9,20 @@
 - howto/build-usb.md
 - howto/dry-run.md
 - howto/standalone-release-and-install.md
-- devlog/2026-01-24-sonic-v1.0.1.md
-- roadmap.md
+- devlog/2026-01-24-sonic-standalone-baseline.md
 
-## v1.5 Canonical direction
+## Active Direction
 
-- `integration-spec.md` is the active Sonic integration contract for v1.5
-- `specs/sonic-screwdriver-v1.1.0.md` now describes the active v1.5 Sonic
+- `integration-spec.md` is the active Sonic integration contract
+- `specs/sonic-screwdriver.md` now describes the active Sonic
   provisioning contract
-- `../../docs/specs/UHOME-v1.5.md` is the canonical `uHOME` runtime and install
-  spec that Sonic aligns to
+- `distribution/` and `memory/sonic/` define the tracked-vs-local storage boundary
+- the active `uHOME` runtime and install spec is external to this repository
+  and should be referenced as an integration dependency, not an internal doc
 - Wizard owns active network-control surfaces such as beacon and Home Assistant
   integration
 
 ## Legacy
-- .archive/ contains the original Sonic Stick Pack docs.
+- `specs/sonic-screwdriver-legacy-baseline.md` captures the first standalone planning split.
+- `roadmap-v1-4-*.md` files capture historical exploration that is still kept in
+  this repo.

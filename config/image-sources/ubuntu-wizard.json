@@ -4,7 +4,7 @@
   "publisher": "Canonical",
   "channel": "lts",
   "origin_url": "https://ubuntu.com/download",
-  "artifact_path": "payloads/wizard/ubuntu.iso",
+  "artifact_path": "memory/sonic/artifacts/payloads/wizard/ubuntu.iso",
   "artifact_kind": "iso",
   "license": "Ubuntu image redistribution subject to upstream terms",
   "tracked_at": "2026-03-02",

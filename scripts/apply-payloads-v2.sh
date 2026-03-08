@@ -64,8 +64,8 @@ if [[ -n "$PAYLOADS_DIR" ]]; then
 fi
 
 if [[ -z "$PAYLOAD_DIR" ]]; then
-  log_warn "payload_dir not set in manifest. Using ${BASE_DIR}/payloads"
-  PAYLOAD_DIR="${BASE_DIR}/payloads"
+  log_warn "payload_dir not set in manifest. Using ${BASE_DIR}/memory/sonic/artifacts/payloads"
+  PAYLOAD_DIR="${BASE_DIR}/memory/sonic/artifacts/payloads"
 fi
 
 if [[ ! -d "$PAYLOAD_DIR" ]]; then
@@ -121,15 +121,18 @@ resolve_payload_source() {
     if [[ "$override" == /* ]]; then
       echo "$override"
     else
-      echo "$BASE_DIR/$override"
+      echo "$PAYLOAD_DIR/$override"
     fi
     return 0
   fi
   case "$role" in
     efi) echo "$PAYLOAD_DIR/efi" ;;
     udos) echo "$PAYLOAD_DIR/udos/rw" ;;
+    uhome) echo "$PAYLOAD_DIR/uhome/system" ;;
     wizard) echo "$PAYLOAD_DIR/wizard" ;;
     windows) echo "$PAYLOAD_DIR/windows" ;;
+    games) echo "$PAYLOAD_DIR/windows" ;;
+    steam) echo "$PAYLOAD_DIR/uhome/system" ;;
     media) echo "$PAYLOAD_DIR/media" ;;
     cache) echo "$PAYLOAD_DIR/cache" ;;
     *) echo "" ;;
@@ -145,8 +148,16 @@ validate_payload_sources() {
       continue
     fi
     if [[ "$fs" == "squashfs" ]]; then
-      if [[ -n "$image" && ! -f "$BASE_DIR/$image" ]]; then
-        log_warn "Missing squashfs image for $label: $BASE_DIR/$image"
+      local image_path=""
+      if [[ -n "$image" ]]; then
+        if [[ "$image" == /* ]]; then
+          image_path="$image"
+        else
+          image_path="$PAYLOAD_DIR/$image"
+        fi
+      fi
+      if [[ -n "$image_path" && ! -f "$image_path" ]]; then
+        log_warn "Missing squashfs image for $label: $image_path"
         missing=1
       fi
       continue
@@ -188,11 +199,19 @@ for line in $PARTS; do
   fi
 
   if [[ "$fs" == "squashfs" ]]; then
-    if [[ -n "$image" && -f "$BASE_DIR/$image" ]]; then
+    image_path=""
+    if [[ -n "$image" ]]; then
+      if [[ "$image" == /* ]]; then
+        image_path="$image"
+      else
+        image_path="$PAYLOAD_DIR/$image"
+      fi
+    fi
+    if [[ -n "$image_path" && -f "$image_path" ]]; then
       log_info "Writing squashfs image to $part ($label)"
-      dd if="$BASE_DIR/$image" of="$part" bs=4M status=progress conv=fsync
+      dd if="$image_path" of="$part" bs=4M status=progress conv=fsync
     else
-      log_warn "No squashfs image found for $label (expected $BASE_DIR/$image)"
+      log_warn "No squashfs image found for $label (expected ${image_path:-unset})"
     fi
     continue
   fi

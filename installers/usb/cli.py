@@ -1,19 +1,27 @@
-"""Sonic Screwdriver CLI wrapper.
+"""Sonic Screwdriver USB installer CLI.
 
 Usage:
-  python3 core/sonic_cli.py plan --usb-device /dev/sdb
+  python3 installers/usb/cli.py plan --usb-device /dev/sdb
 """
 
 import argparse
 import subprocess
+import sys
 from pathlib import Path
 
+if __package__ in {None, ""}:  # pragma: no cover - direct script execution
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
 try:
-    from .os_limits import support_message, is_supported
+    from core.os_limits import support_message, is_supported
+    from core.sonic_api import serve as serve_api
+    from core.sonic_mcp import SonicMcpServer
     from .plan import write_plan
 except ImportError:  # pragma: no cover - fallback for direct execution
-    from os_limits import support_message, is_supported
-    from plan import write_plan
+    from core.os_limits import support_message, is_supported
+    from core.sonic_api import serve as serve_api
+    from core.sonic_mcp import SonicMcpServer
+    from installers.usb.plan import write_plan
 
 
 def main() -> int:
@@ -21,15 +29,15 @@ def main() -> int:
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     plan_cmd = sub.add_parser("plan", help="Generate ops manifest")
-    plan_cmd.add_argument("--repo-root", default=str(Path(__file__).resolve().parents[1]))
+    plan_cmd.add_argument("--repo-root", default=str(Path(__file__).resolve().parents[2]))
     plan_cmd.add_argument("--usb-device", default="/dev/sdb")
     plan_cmd.add_argument("--dry-run", action="store_true")
-    plan_cmd.add_argument("--out", default="config/sonic-manifest.json")
+    plan_cmd.add_argument("--out", default="memory/sonic/sonic-manifest.json")
     plan_cmd.add_argument("--layout-file", default="config/sonic-layout.json")
     plan_cmd.add_argument(
         "--payloads-dir",
         default=None,
-        help="Override payloads root directory (defaults to repo_root/payloads)",
+        help="Override payloads root directory (defaults to repo_root/memory/sonic/artifacts/payloads)",
     )
     plan_cmd.add_argument(
         "--format-mode",
@@ -39,13 +47,21 @@ def main() -> int:
     )
 
     run_cmd = sub.add_parser("run", help="Execute bash entrypoint")
-    run_cmd.add_argument("--manifest", default="config/sonic-manifest.json")
+    run_cmd.add_argument("--manifest", default="memory/sonic/sonic-manifest.json")
     run_cmd.add_argument("--dry-run", action="store_true")
     run_cmd.add_argument("--v2", action="store_true", help="Use v2 partition layout pipeline")
     run_cmd.add_argument("--skip-payloads", action="store_true")
     run_cmd.add_argument("--payloads-only", action="store_true")
     run_cmd.add_argument("--payloads-dir", default=None)
     run_cmd.add_argument("--no-validate-payloads", action="store_true")
+
+    api_cmd = sub.add_parser("serve-api", help="Serve the local Sonic HTTP API")
+    api_cmd.add_argument("--repo-root", default=str(Path(__file__).resolve().parents[2]))
+    api_cmd.add_argument("--host", default="127.0.0.1")
+    api_cmd.add_argument("--port", type=int, default=8991)
+
+    mcp_cmd = sub.add_parser("serve-mcp", help="Serve the Sonic MCP facade over stdio")
+    mcp_cmd.add_argument("--repo-root", default=str(Path(__file__).resolve().parents[2]))
 
     args = parser.parse_args()
 
@@ -72,12 +88,18 @@ def main() -> int:
             print("Dry run enabled. No destructive operations should be executed.")
         return 0
 
+    if args.cmd == "serve-api":
+        return serve_api(host=args.host, port=args.port, repo_root=Path(args.repo_root))
+
+    if args.cmd == "serve-mcp":
+        return SonicMcpServer(repo_root=Path(args.repo_root)).run()
+
     print(support_message())
     if not is_supported():
         print("ERROR Unsupported OS for build operations. Use Linux.")
         return 1
 
-    script = Path(__file__).resolve().parents[1] / "scripts" / "sonic-stick.sh"
+    script = Path(__file__).resolve().parents[2] / "scripts" / "sonic-stick.sh"
     cmd = ["bash", str(script), "--manifest", args.manifest]
     if args.dry_run:
         cmd.append("--dry-run")

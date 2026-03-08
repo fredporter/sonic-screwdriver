@@ -1,4 +1,4 @@
-# 2026-01-24 - Sonic Screwdriver v1.0.1
+# 2026-01-24 - Sonic Standalone Baseline
 
 - Added core planning layer and manifest output.
 - Added OS limitation checks (Linux-only build).

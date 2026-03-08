@@ -60,12 +60,12 @@ if [[ "$OS_NAME" != "alpine" && "$OS_NAME" != "ubuntu" ]]; then
 fi
 
 if [[ -z "$MANIFEST" ]]; then
-  MANIFEST="${BASE_DIR}/config/sonic-manifest.json"
+  MANIFEST="${BASE_DIR}/memory/sonic/sonic-manifest.json"
 fi
 
 if [[ ! -f "$MANIFEST" ]]; then
   echo "ERROR Manifest not found: $MANIFEST"
-  echo "Run: python3 core/sonic_cli.py plan --out config/sonic-manifest.json"
+  echo "Run: python3 installers/usb/cli.py plan --out memory/sonic/sonic-manifest.json"
   exit 1
 fi
 

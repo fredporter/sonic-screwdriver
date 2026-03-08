@@ -36,14 +36,14 @@ from enum import Enum
 from pathlib import Path
 from typing import Any
 
-from sonic.core.uhome_bundle import (
+from .bundle import (
     UHOMEBundleManifest,
     UHOMERollbackRecord,
     BundleVerifyResult,
     read_bundle_manifest,
     verify_bundle,
 )
-from sonic.core.uhome_preflight import (
+from .preflight import (
     UHOMEHardwareProfile,
     UHOMEPreflightResult,
     DEFAULT_PROFILE,

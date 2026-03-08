@@ -1,4 +1,6 @@
-# uDOS Sonic Screwdriver v1.0.1
+# uDOS Sonic Screwdriver Legacy Baseline
+
+Status: Legacy
 
 ## Purpose
 
@@ -18,7 +20,7 @@ between planning (core) and execution (bash).
 
 ## Manifest
 
-Default location: `config/sonic-manifest.json`
+Default location: `memory/sonic/sonic-manifest.json`
 
 Fields:
 - usb_device: target device (e.g., /dev/sdb)
@@ -31,7 +33,7 @@ Fields:
 - Build operations only on Linux (Ubuntu/Debian/Alpine).
 - macOS/Windows are unsupported for disk operations.
 
-## v1.0.1 Deliverables
+## Baseline Deliverables
 
 - Core planning tools (manifest + OS checks)
 - Bash script supports manifest + dry-run
