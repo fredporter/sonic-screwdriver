@@ -54,3 +54,9 @@ bash scripts/sonic-stick.sh --manifest memory/sonic/sonic-manifest.json --no-val
 - Add files to `memory/sonic/artifacts/payloads/windows`, `memory/sonic/artifacts/payloads/media`, `memory/sonic/artifacts/payloads/wizard`, etc.
 
 4) Follow prompts and confirm destructive steps.
+
+Optional Linux smoke verification:
+
+```bash
+bash scripts/smoke/linux-runtime-smoke.sh
+```

@@ -91,6 +91,12 @@ Serve the MCP facade:
 python3 apps/sonic-cli/cli.py serve-mcp
 ```
 
+Run the Linux smoke workflow:
+
+```bash
+bash scripts/smoke/linux-runtime-smoke.sh
+```
+
 ## Learning Surfaces
 
 There are now three ways to enter this repo:
