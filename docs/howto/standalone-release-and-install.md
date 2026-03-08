@@ -1,6 +1,7 @@
 # Sonic Standalone Release and Install Guide
 
 This repository is the standalone Sonic guide.
+Primary learning destination: `courses/01-sonic-screwdriver/lessons/03-apply-rescue-and-handoff.md`
 
 For `uHOME` contract details, treat `uHOME-server` as the canonical owner.
 This guide is about Sonic-owned release, staging, and deployment surfaces.

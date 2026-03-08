@@ -47,9 +47,10 @@ uDOS-sonic/ -- active public/runtime structure
 │   │   └── README.md
 │   └── templates/
 │       └── README.md
-├── courses/
+├── courses/              -- one Sonic course; broader learning stays in uDOS
 ├── wiki/
 ├── docs/
+│   └── .compost/        -- tracked archive for superseded docs and course scaffolds
 ├── config/
 ├── scripts/
 ├── tests/

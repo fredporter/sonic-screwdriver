@@ -1,7 +1,7 @@
 # Dry Run
 
 Status: migration source
-Primary learning destination: `courses/02-system-provisioning/lessons/02-build-and-dry-run.md`
+Primary learning destination: `courses/01-sonic-screwdriver/lessons/02-layout-manifest-and-dry-run.md`
 
 Use dry-run to validate device selection and manifest values before any destructive action.
 

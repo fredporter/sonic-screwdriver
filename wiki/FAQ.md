@@ -20,4 +20,4 @@ Yes for reading and learning. No for real build/apply operations.
 
 ## What should I run first?
 
-Read the README, then Course 01, then the dry-run guide.
+Read the README, then the Sonic Screwdriver course, then the dry-run guide.

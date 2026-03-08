@@ -1,6 +1,7 @@
 # Quickstart (Linux)
 
 Status: active how-to
+Primary learning destination: `courses/01-sonic-screwdriver/`
 
 Install editable Sonic entrypoints from the repo root:
 

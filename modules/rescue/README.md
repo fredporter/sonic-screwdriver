@@ -8,7 +8,7 @@ Current implementation lives across:
 - `scripts/verify-usb-layout.sh`
 - `scripts/tinycore-bootlog.sh`
 - `memory/sonic/` runtime artifacts and logs
-- `courses/03-portable-dev-systems/`
+- `courses/01-sonic-screwdriver/`
 
 Educational role:
 

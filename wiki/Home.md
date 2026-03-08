@@ -1,6 +1,6 @@
 # Welcome to the Sonic wiki
 
-Updated: 2026-03-08
+Updated: 2026-03-09
 
 This wiki is the student-facing orientation layer for `uDOS-sonic`.
 
@@ -11,20 +11,20 @@ Use it when you want the shortest path to understanding:
 - how it relates to `uDOS` and `uHOME-server`
 - where to start learning
 
-When you want implementation detail, move from the wiki into `courses/` and
-then into `docs/`.
+When you want implementation detail, move from the wiki into the Sonic course
+and then into `docs/`.
 
 ## Start Here
 
 - first steps: [Getting Started](Getting-Started.md)
-- learning ladder: [Education Pathways](Education-Pathways.md)
+- Sonic course map: [Education Pathways](Education-Pathways.md)
 - repo boundaries: [Repo Map](Repo-Map.md)
 - common questions: [FAQ](FAQ.md)
 
 ## Project Snapshot
 
 - repo front door: [../README.md](../README.md)
-- course ladder: [../courses/README.md](../courses/README.md)
+- Sonic course: [../courses/README.md](../courses/README.md)
 - docs index: [../docs/README.md](../docs/README.md)
 - active structure assessment: [../docs/sonic-structure-assessment-2026-03-08.md](../docs/sonic-structure-assessment-2026-03-08.md)
 

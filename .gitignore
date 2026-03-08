@@ -24,7 +24,7 @@ LOGS/
 binders/
 .local-extension/
 .local/
-.compost/
+/.compost/
 review-staging/
 workspace-state/
 binder-state/

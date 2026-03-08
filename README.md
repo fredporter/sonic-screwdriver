@@ -112,11 +112,17 @@ bash scripts/smoke/linux-runtime-smoke.sh
 There are now three ways to enter this repo:
 
 - student-facing wiki: [wiki/Home.md](/Users/fredbook/Code/uDOS-sonic/wiki/Home.md)
-- guided course ladder: [courses/README.md](/Users/fredbook/Code/uDOS-sonic/courses/README.md)
+- Sonic course: [courses/README.md](/Users/fredbook/Code/uDOS-sonic/courses/README.md)
 - reference docs: [docs/README.md](/Users/fredbook/Code/uDOS-sonic/docs/README.md)
 
-Use the wiki for orientation, `courses/` for guided learning, and `docs/` for
-implementation details and active contracts.
+Use the wiki for orientation, the Sonic course for the deployment lane, and
+`docs/` for implementation details and active contracts.
+
+For broader platform learning, use the sibling `uDOS` course ladder instead of
+duplicating the same pathway structure in Sonic:
+
+- [uDOS Courses README](/Users/fredbook/Code/uDOS/courses/README.md)
+- [uDOS Education Pathways](/Users/fredbook/Code/uDOS/wiki/Education-Pathways.md)
 
 If you prefer repo-local execution without installing entrypoints, the direct
 CLI path remains `python3 apps/sonic-cli/cli.py`.

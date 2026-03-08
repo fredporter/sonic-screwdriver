@@ -2,73 +2,29 @@
 
 This root is the education lane for `uDOS-sonic`.
 
-Purpose:
+Sonic now keeps one canonical course here:
 
-- teach hardware bootstrap and deployment concepts through the real repo
-- turn Sonic into a learnable pathway, not just an installer codebase
-- align Sonic with the same family architecture language used by `uDOS`
+- `01-sonic-screwdriver/`
 
-## Current State
+That course teaches the specialized Sonic lane:
 
-The working runtime now uses the same top-level language the courses teach:
+- deployment planning
+- manifest inspection
+- dry-run discipline
+- Linux-side apply
+- rescue and handoff boundaries
 
-- `apps/`
-- `services/`
-- `modules/`
-- `vault/`
-- `memory/`
+Sonic should not duplicate the whole `uDOS` education ladder. Broader platform
+learning belongs in the sibling `uDOS` repo.
 
-The course system is the education-facing layer that organizes those real
-surfaces into a guided path.
+## Sonic Learning Surface
 
-During this transition:
+- [Course 01 - Universal Sonic Screwdriver](/Users/fredbook/Code/uDOS-sonic/courses/01-sonic-screwdriver/README.md)
 
-- the runtime layout remains canonical
-- `wiki/` is the first student-facing orientation layer
-- `docs/` remains the reference-first source of truth
-- `courses/` becomes the guided learning ladder
+## Related uDOS Learning
 
-## Learning Ladder
-
-Sonic should currently teach four major levels:
-
-1. Deployment Fundamentals
-2. System Provisioning
-3. Portable Dev Systems
-4. Infrastructure Deployment
-
-## Course Format
-
-Each course should eventually follow the same structure:
-
-- `README.md`
-- `overview.md`
-- `objectives.md`
-- `prerequisites.md`
-- `lessons/`
-- `exercises/`
-- `checkpoints/`
-- `project/`
-- `extension/`
-
-## Pathway Role
-
-Within the wider repo family:
-
-- `uDOS` is the shared core and architecture umbrella
-- `uDOS-sonic` is the deployment and hardware bootstrap pathway
-- `uHOME-server` is the home infrastructure runtime pathway
-
-Sonic courses should therefore teach:
-
-- how to plan and verify installs
-- how to provision disks and devices safely
-- how to stage portable development systems
-- how to hand deployments off to `uDOS` and `uHOME`
-
-## Initial Course Scaffolds
-
-- `01-deployment-fundamentals/`
-- `02-system-provisioning/`
-- `03-portable-dev-systems/`
-- `04-infrastructure-deployment/`
+- [uDOS Courses README](/Users/fredbook/Code/uDOS/courses/README.md)
+- [uDOS Education Pathways](/Users/fredbook/Code/uDOS/wiki/Education-Pathways.md)
+- [uDOS Course 00 - Orientation](/Users/fredbook/Code/uDOS/courses/00-orientation/README.md)
+- [uDOS Course 02 - Local-First Development](/Users/fredbook/Code/uDOS/courses/02-local-first-dev/README.md)
+- [uDOS Course 05 - Personal Infrastructure](/Users/fredbook/Code/uDOS/courses/05-personal-infrastructure/README.md)

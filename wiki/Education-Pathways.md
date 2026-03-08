@@ -2,17 +2,11 @@
 
 Sonic teaches one specialized path inside the larger repo family:
 
-- deployment fundamentals
-- system provisioning
-- portable dev systems
-- infrastructure deployment
+- the universal Sonic Screwdriver framework
 
-These map to:
+This maps to:
 
-- [../courses/01-deployment-fundamentals/README.md](../courses/01-deployment-fundamentals/README.md)
-- [../courses/02-system-provisioning/README.md](../courses/02-system-provisioning/README.md)
-- [../courses/03-portable-dev-systems/README.md](../courses/03-portable-dev-systems/README.md)
-- [../courses/04-infrastructure-deployment/README.md](../courses/04-infrastructure-deployment/README.md)
+- [../courses/01-sonic-screwdriver/README.md](../courses/01-sonic-screwdriver/README.md)
 
 ## Student Outcome
 
@@ -22,3 +16,14 @@ The student should come away able to:
 - understand manifest-driven install flows
 - use dry-run safely
 - explain where Sonic hands off to `uDOS` or `uHOME-server`
+
+## Broader uDOS Learning
+
+Sonic does not need to duplicate the full `uDOS` education ladder. For broader
+platform learning, continue in the sibling repo:
+
+- [uDOS Courses README](/Users/fredbook/Code/uDOS/courses/README.md)
+- [uDOS Course 00 - Orientation](/Users/fredbook/Code/uDOS/courses/00-orientation/README.md)
+- [uDOS Course 02 - Local-First Development](/Users/fredbook/Code/uDOS/courses/02-local-first-dev/README.md)
+- [uDOS Course 03 - API and Automation](/Users/fredbook/Code/uDOS/courses/03-api-and-automation/README.md)
+- [uDOS Course 05 - Personal Infrastructure](/Users/fredbook/Code/uDOS/courses/05-personal-infrastructure/README.md)

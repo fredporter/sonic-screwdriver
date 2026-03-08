@@ -1,6 +1,7 @@
 # Build USB (Linux)
 
 Status: active how-to
+Primary learning destination: `courses/01-sonic-screwdriver/`
 
 For `uHOME`-specific bundle, preflight, or staged install contracts, use the
 canonical sources in the sibling `uHOME-server` repository. This guide covers
