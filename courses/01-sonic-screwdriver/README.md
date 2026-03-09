@@ -45,6 +45,14 @@ Different backgrounds? Different goals? Pick the right path for you:
 
 See [LEARNING-PATHS.md](LEARNING-PATHS.md) for complete details on each path.
 
+## After Course 01
+
+Continue your progression with advanced Sonic tracks:
+
+- [Course 02 - Deployment Patterns](../02-deployment-patterns/README.md)
+- [Course 03 - Extension and Customization](../03-extension-and-customization/README.md)
+- [Course Dependency Map](../COURSE-DEPENDENCY-MAP.md)
+
 For broader platform learning beyond Sonic, use the sibling `uDOS` course
 ladder:
 
