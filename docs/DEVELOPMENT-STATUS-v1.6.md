@@ -16,6 +16,7 @@
 | @dev Workspace Sync | 🟡 In progress | Public outputs now include completed binder artifacts |
 | Education binder (v1.6.1) | ✅ Complete | [docs/BINDER-PROGRESS-2026-03-10.md](BINDER-PROGRESS-2026-03-10.md) |
 | Vault binder (v1.6.3) | ✅ Complete | [docs/BINDER-PROGRESS-v1.6.3-2026-03-10.md](BINDER-PROGRESS-v1.6.3-2026-03-10.md) |
+| Services architecture binder (v1.6.4) | ✅ Complete | [docs/BINDER-PROGRESS-v1.6.4-2026-03-10.md](BINDER-PROGRESS-v1.6.4-2026-03-10.md) |
 | Packaging binder | 🟡 Ready to start | No blockers identified |
 | uHOME-boundary binder | 🟠 Blocked | Waiting for uHOME-server confirmation |
 
@@ -36,11 +37,9 @@
 - **Action**: Validate examples against next layout contract change
 
 **#binder/sonic-services-architecture** (v1.6.4)
-- Status: Ready to start immediately
-- Owner: (assign from @dev workspace)
-- Pure documentation work, no code changes needed
-- Effort: ~13 hours total
-- **Action**: Start with Task 4.1 and 4.2 in parallel
+- Status: Complete
+- Progress: [docs/BINDER-PROGRESS-v1.6.4-2026-03-10.md](BINDER-PROGRESS-v1.6.4-2026-03-10.md)
+- **Action**: Keep docs synced as service contracts evolve
 
 ### Medium Priority (Start Week 2-3)
 
@@ -146,7 +145,7 @@
 
 ✅ Education binder complete (`v1.6.1`)  
 ✅ Vault binder complete (`v1.6.3`)  
-⏳ Services architecture binder started (`v1.6.4`)  
+✅ Services architecture binder complete (`v1.6.4`)  
 ⏳ Packaging binder started (`v1.6.5`)  
 ⚠️ uHOME boundary timeline confirmed (`v1.6.2`)
 
