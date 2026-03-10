@@ -13,12 +13,14 @@
 | v1.5.5 Release | ✅ Complete | Tagged and pushed 2026-03-09 |
 | v1.6 Roadmap | ✅ Published | [docs/ROADMAP-v1.6.md](ROADMAP-v1.6.md) |
 | Binder Breakdown | ✅ Published | [docs/BINDER-BREAKDOWN-v1.6.md](BINDER-BREAKDOWN-v1.6.md) |
-| @dev Workspace Sync | 🟡 In progress | Public outputs now include completed binder artifacts |
+| @dev Workspace Sync | ✅ Complete | All binder outputs committed to main |
 | Education binder (v1.6.1) | ✅ Complete | [docs/BINDER-PROGRESS-2026-03-10.md](BINDER-PROGRESS-2026-03-10.md) |
 | Vault binder (v1.6.3) | ✅ Complete | [docs/BINDER-PROGRESS-v1.6.3-2026-03-10.md](BINDER-PROGRESS-v1.6.3-2026-03-10.md) |
 | Services architecture binder (v1.6.4) | ✅ Complete | [docs/BINDER-PROGRESS-v1.6.4-2026-03-10.md](BINDER-PROGRESS-v1.6.4-2026-03-10.md) |
 | Packaging binder (v1.6.5) | 🟡 In progress | [docs/BINDER-PROGRESS-v1.6.5-2026-03-10.md](BINDER-PROGRESS-v1.6.5-2026-03-10.md) |
 | uHOME-boundary binder (v1.6.2) | 🟠 In progress (blocked) | [docs/BINDER-PROGRESS-v1.6.2-2026-03-10.md](BINDER-PROGRESS-v1.6.2-2026-03-10.md) |
+| CI/CD Infrastructure | ✅ Complete | GitHub Actions for test + release automation |
+| v1.6 Milestone Summary | ✅ Published | [docs/V1.6-MILESTONE-SUMMARY.md](V1.6-MILESTONE-SUMMARY.md) |
 
 ---
 
