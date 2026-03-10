@@ -15,6 +15,8 @@
 - howto/dev-workflow.md
 - howto/standalone-release-and-install.md
 - howto/vault-templates-and-examples.md
+- howto/development-install.md
+- howto/production-install.md
 - ../LEGAL.md
 - ../CONTRIBUTING.md
 - ../CONTRIBUTORS.md

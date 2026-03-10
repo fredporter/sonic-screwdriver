@@ -22,3 +22,10 @@ def test_editable_install_script_uses_repo_root_install() -> None:
     assert "python3 -m pip install -e ." in contents
     assert "sonic-api" in contents
     assert "sonic-mcp" in contents
+
+
+def test_installable_sonic_cli_is_self_contained() -> None:
+    contents = (REPO_ROOT / "sonic_cli.py").read_text(encoding="utf-8")
+
+    assert "apps/sonic-cli/cli.py" not in contents
+    assert "def main() -> int:" in contents

@@ -17,7 +17,7 @@
 | Education binder (v1.6.1) | ✅ Complete | [docs/BINDER-PROGRESS-2026-03-10.md](BINDER-PROGRESS-2026-03-10.md) |
 | Vault binder (v1.6.3) | ✅ Complete | [docs/BINDER-PROGRESS-v1.6.3-2026-03-10.md](BINDER-PROGRESS-v1.6.3-2026-03-10.md) |
 | Services architecture binder (v1.6.4) | ✅ Complete | [docs/BINDER-PROGRESS-v1.6.4-2026-03-10.md](BINDER-PROGRESS-v1.6.4-2026-03-10.md) |
-| Packaging binder | 🟡 Ready to start | No blockers identified |
+| Packaging binder (v1.6.5) | 🟡 In progress | [docs/BINDER-PROGRESS-v1.6.5-2026-03-10.md](BINDER-PROGRESS-v1.6.5-2026-03-10.md) |
 | uHOME-boundary binder | 🟠 Blocked | Waiting for uHOME-server confirmation |
 
 ---
@@ -44,11 +44,11 @@
 ### Medium Priority (Start Week 2-3)
 
 **#binder/sonic-packaging-finalization** (v1.6.5)
-- Status: Ready to start after week 1 progress
-- Owner: (assign from @dev workspace)
-- May expose issues that need fixes
-- Effort: ~12 hours total
-- **Action**: Start with task 5.1 for early confidence
+- Status: In progress (local validation complete)
+- Progress: [docs/BINDER-PROGRESS-v1.6.5-2026-03-10.md](BINDER-PROGRESS-v1.6.5-2026-03-10.md)
+- Completed: tasks 5.1-5.5 with local macOS validation and packaging fixes
+- Remaining: cross-OS install checks (Linux + Windows/WSL)
+- **Action**: run same clean-venv matrix in CI or dedicated runners
 
 ### Blocked (Waiting)
 
@@ -146,7 +146,7 @@
 ✅ Education binder complete (`v1.6.1`)  
 ✅ Vault binder complete (`v1.6.3`)  
 ✅ Services architecture binder complete (`v1.6.4`)  
-⏳ Packaging binder started (`v1.6.5`)  
+🟡 Packaging binder locally validated (`v1.6.5`)  
 ⚠️ uHOME boundary timeline confirmed (`v1.6.2`)
 
 ---

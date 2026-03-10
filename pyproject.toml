@@ -22,4 +22,4 @@ sonic-mcp = "services.mcp_server:main"
 py-modules = ["sonic_cli"]
 
 [tool.setuptools.packages.find]
-include = ["services", "installers"]
+include = ["services*", "installers*", "udos_sonic*"]
