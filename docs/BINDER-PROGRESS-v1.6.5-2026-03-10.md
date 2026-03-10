@@ -100,6 +100,68 @@ Primary files:
 
 ## Validation Evidence
 
+### Automated Validation Scripts
+
+Two cross-platform validation scripts are now available:
+
+- [scripts/validate-packaging.sh](../scripts/validate-packaging.sh) - macOS / Linux / WSL
+- [scripts/validate-packaging.ps1](../scripts/validate-packaging.ps1) - Windows PowerShell
+- Documentation: [docs/howto/cross-platform-validation.md](howto/cross-platform-validation.md)
+
+### macOS Validation Results
+
+**Platform**: Darwin 25.3.0  
+**Python**: Python 3.9.6  
+**Package Version**: 1.5.5  
+**Date**: 2026-03-10
+
+Automated validation: ✅ **All checks passed**
+
+```bash
+$ ./scripts/validate-packaging.sh
+===============================================
+uDOS-sonic Packaging Validation
+===============================================
+OS: Darwin
+Python: Python 3.9.6
+Repo: /Users/fredbook/Code/uDOS-sonic
+Test venv: /tmp/udos-sonic-validation-54449
+===============================================
+
+Step 1: Create clean virtual environment
+✓ Virtual environment created
+
+Step 2: Install package from repository
+✓ Package installed
+
+Step 3: Verify Python import paths
+  ✓ import udos_sonic
+  ✓ from udos_sonic import SonicService
+  ✓ from udos_sonic import SonicManifest, default_manifest, validate_manifest_data
+  ✓ from udos_sonic.services import write_plan, build_plan
+  ✓ from udos_sonic.services import SonicService
+  ✓ SonicService() construction succeeds
+✓ All import paths verified
+
+Step 4: Verify console script entrypoints
+  ✓ sonic --help
+  ✓ sonic plan --help
+  ✓ sonic run --help
+  ✓ sonic-api --help
+  ✓ sonic-mcp --help
+✓ All console entrypoints verified
+
+Step 5: Test custom build engine example
+  ✓ Custom build engine example executes
+✓ Extension example verified
+
+===============================================
+✅ All validation checks passed!
+===============================================
+```
+
+### Manual Test Results (Pre-Automation)
+
 Local clean-venv command checks succeeded:
 
 - package install from repo path
@@ -117,23 +179,37 @@ python -m pytest tests/test_import_paths.py tests/test_packaging_setup.py tests/
 
 Result: `11 passed`
 
+### Linux Validation Results
+
+**Status**: ⏳ Pending
+
+Run: `./scripts/validate-packaging.sh` on Linux system
+
+### Windows/WSL Validation Results
+
+**Status**: ⏳ Pending
+
+- WSL: Run `./scripts/validate-packaging.sh` in WSL environment
+- PowerShell: Run `.\scripts\validate-packaging.ps1` in native Windows
+
 ---
 
 ## Completion Criteria Check
 
-- `pip install` succeeds on three OS targets: **partial** (macOS done; Linux + Windows/WSL pending)
-- All documented import paths work: **complete**
-- Extension example is runnable: **complete**
-- Installation guide is clear: **complete**
+- `pip install` succeeds on three OS targets: **partial** (macOS ✅; Linux ⏳; Windows/WSL ⏳)
+- All documented import paths work: **complete** ✅
+- Extension example is runnable: **complete** ✅
+- Installation guide is clear: **complete** ✅
 
 ---
 
 ## Next Actions to Close Binder
 
-1. Run same clean-venv validation on Linux.
-2. Run same clean-venv validation on Windows/WSL.
-3. Capture outputs in this report and mark binder complete.
+1. ⏳ Run `./scripts/validate-packaging.sh` on Linux system
+2. ⏳ Run `./scripts/validate-packaging.sh` on WSL or `.\scripts\validate-packaging.ps1` on Windows
+3. 📝 Capture validation outputs in this report
+4. ✅ Mark binder complete when all three platforms validated
 
 ---
 
-**Binder State**: Open, pending cross-OS confirmation
+**Binder State**: Open, automated validation ready for Linux + Windows/WSL

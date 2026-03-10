@@ -3,11 +3,16 @@
 ## Current
 - specs/sonic-screwdriver.md
 - integration-spec.md
+- V1.6-MILESTONE-SUMMARY.md
+- DEVELOPMENT-STATUS-v1.6.md
+- ROADMAP-v1.6.md
+- BINDER-BREAKDOWN-v1.6.md
 - architecture/services-overview.md
 - architecture/services-planner.md
 - architecture/services-manifest.md
 - architecture/services-catalog.md
 - architecture/services-testing.md
+- architecture/vault-integration.md
 - architecture/uhome-module-inventory-2026-03-10.md
 - sonic-structure-assessment-2026-03-08.md
 - howto/build-usb.md
@@ -18,6 +23,7 @@
 - howto/vault-templates-and-examples.md
 - howto/development-install.md
 - howto/production-install.md
+- howto/cross-platform-validation.md
 - ../LEGAL.md
 - ../CONTRIBUTING.md
 - ../CONTRIBUTORS.md
