@@ -173,6 +173,7 @@ The broader Sonic role is deployment infrastructure and portable provisioning.
 - docs index: [docs/README.md](docs/README.md)
 - v2 architecture: [docs/architecture.md](docs/architecture.md)
 - v2 boundary: [docs/boundary.md](docs/boundary.md)
+- release policy: [docs/release-policy.md](docs/release-policy.md)
 - archived provisioning contract: [docs/v1/specs/sonic-screwdriver.md](docs/v1/specs/sonic-screwdriver.md)
 - archived integration boundary: [docs/v1/integration-spec.md](docs/v1/integration-spec.md)
 - archived structure assessment: [docs/v1/sonic-structure-assessment-2026-03-08.md](docs/v1/sonic-structure-assessment-2026-03-08.md)

@@ -13,3 +13,9 @@ Key subdirectories:
 
 Operator setup helpers live outside this tree under `installers/setup/` because
 they install repo-local entrypoints rather than distribution payloads.
+
+Release note:
+
+- tracked descriptors may inform public releases
+- large generated build outputs should not be attached to releases until the
+  repo's release policy and build lane are both stable
