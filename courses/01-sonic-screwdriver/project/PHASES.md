@@ -26,7 +26,7 @@ By completing this project, you'll know how to:
 - [ ] Generate a manifest safely with `sonic plan`
 - [ ] Inspect and interpret manifest output
 - [ ] Use dry-run to validate before applying
-- [ ] Understand boundaries with `uDOS` and `uHOME-server`
+- [ ] Understand boundaries with `uDOS-core`, `uDOS-wizard`, and `uHOME-server`
 - [ ] Recover from deployment failures
 - [ ] Document a deployment for handoff
 
@@ -60,7 +60,7 @@ Generate your first manifest *in dry-run mode* (safe, no changes):
 
 ```bash
 # Edit installers/setup/ to match your environment, then:
-cd <local-project-root>/uDOS-sonic
+cd /path/to/uDOS-sonic-screwdriver
 
 # Install Sonic CLI (first time only)
 bash installers/setup/install-sonic-editable.sh
@@ -101,7 +101,7 @@ Based on your manifest, identify where Sonic hands off work to other systems:
 
 **Your job**: Create a `boundaries.md` document that identifies:
 1. Any `uHOME` bundle references (would go to `uHOME-server`)
-2. Any `uDOS` profile references (would go back to `uDOS` core)
+2. Any `uDOS-core` or `uDOS-wizard` references that belong back to those repos
 3. What Sonic *does* own in this deployment
 4. What Sonic *doesn't* own or delegates
 
@@ -268,7 +268,7 @@ Now that you've completed the course:
 - **Troubleshooter**: If you encountered issues, see [Lesson 4 - Troubleshooting](../lessons/04-troubleshooting.md) (under development)
 - **Operator**: You're ready to deploy Sonic to production hardware
 - **Developer**: Explore [lessons/03-apply-rescue-and-handoff.md](../lessons/03-apply-rescue-and-handoff.md) for extension points
-- **Continued Learning**: Explore `docs/howto/` and `docs/specs/` for deeper dives
+- **Continued Learning**: Explore `docs/v1/howto/` and `docs/v1/specs/` for deeper dives
 
 ---
 
@@ -288,9 +288,8 @@ Optional: Share your project for feedback:
 - **Lesson 2 reference**: [Lesson 02 - Layout, Manifest, Dry-Run](../lessons/02-layout-manifest-and-dry-run.md)
 - **Lesson 3 reference**: [Lesson 03 - Apply, Rescue, Handoff](../lessons/03-apply-rescue-and-handoff.md)
 - **CLI reference**: `sonic plan --help`, `sonic --help`
-- **Troubleshooting**: [Docs - Quickstart](../../docs/howto/quickstart.md)
+- **Troubleshooting**: [Docs - Quickstart](../../docs/v1/howto/quickstart.md)
 
 ---
 
 **Project Status**: Ready to begin!
-

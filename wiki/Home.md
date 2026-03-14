@@ -2,7 +2,8 @@
 
 Updated: 2026-03-09
 
-This wiki is the student-facing orientation layer for `uDOS-sonic`.
+This wiki is the student-facing orientation layer for
+`uDOS-sonic-screwdriver`.
 
 Use it when you want the shortest path to understanding:
 
@@ -26,7 +27,7 @@ and then into `docs/`.
 - repo front door: [../README.md](../README.md)
 - Sonic course: [../courses/README.md](../courses/README.md)
 - docs index: [../docs/README.md](../docs/README.md)
-- active structure assessment: [../docs/sonic-structure-assessment-2026-03-08.md](../docs/sonic-structure-assessment-2026-03-08.md)
+- archived structure assessment: [../docs/v1/sonic-structure-assessment-2026-03-08.md](../docs/v1/sonic-structure-assessment-2026-03-08.md)
 
 ## Core Idea
 
@@ -37,6 +38,6 @@ runtime of every system it can install.
 
 Current family split:
 
-- `uDOS` = shared architecture and Wizard integration
-- `uDOS-sonic` = deployment and hardware bootstrap
+- `uDOS-core` / `uDOS-shell` / `uDOS-wizard` = shared runtime, shell, and assist surfaces
+- `uDOS-sonic-screwdriver` = deployment and hardware bootstrap
 - `uHOME-server` = canonical `uHOME` runtime contracts

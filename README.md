@@ -16,8 +16,10 @@ It is not the canonical owner of the `uHOME` runtime contract.
 
 The current repo split is:
 
-- `uDOS` = shared architecture language, Wizard integration, family coordination
-- `uDOS-sonic` = deployment, provisioning, hardware bootstrap
+- `uDOS-core` = deterministic runtime contracts and execution semantics
+- `uDOS-shell` = interactive shell and workspace interaction surfaces
+- `uDOS-wizard` = network, provider, MCP, and assist surfaces
+- `uDOS-sonic-screwdriver` = deployment, provisioning, hardware bootstrap
 - `uHOME-server` = canonical `uHOME` runtime, bundle, preflight, and install-plan contracts
 
 For `uHOME`-specific contracts, the source of truth is the sibling
@@ -111,18 +113,16 @@ bash scripts/smoke/linux-runtime-smoke.sh
 
 There are now three ways to enter this repo:
 
-- student-facing wiki: [wiki/Home.md](<local-project-root>/uDOS-sonic/wiki/Home.md)
-- Sonic course: [courses/README.md](<local-project-root>/uDOS-sonic/courses/README.md)
-- reference docs: [docs/README.md](<local-project-root>/uDOS-sonic/docs/README.md)
+- student-facing wiki: [wiki/Home.md](wiki/Home.md)
+- Sonic course: [courses/README.md](courses/README.md)
+- reference docs: [docs/README.md](docs/README.md)
 
 Use the wiki for orientation, the Sonic course for the deployment lane, and
 `docs/` for implementation details and active contracts.
 
-For broader platform learning, use the sibling `uDOS` course ladder instead of
-duplicating the same pathway structure in Sonic:
-
-- [uDOS Courses README](<local-project-root>/uDOS/courses/README.md)
-- [uDOS Education Pathways](<local-project-root>/uDOS/wiki/Education-Pathways.md)
+For broader platform learning, use the wider uDOS v2 family docs instead of
+duplicating the same pathway structure in Sonic. Start with `uDOS-docs`,
+`uDOS-core`, and `uDOS-wizard`.
 
 If you prefer repo-local execution without installing entrypoints, the direct
 CLI path remains `python3 apps/sonic-cli/cli.py`.
@@ -145,7 +145,7 @@ The active runtime now aligns to the public repo structure:
 - `tests/` = verification coverage
 
 The earlier structure review is kept as a baseline record in
-[docs/sonic-structure-assessment-2026-03-08.md](<local-project-root>/uDOS-sonic/docs/sonic-structure-assessment-2026-03-08.md).
+[docs/v1/sonic-structure-assessment-2026-03-08.md](docs/v1/sonic-structure-assessment-2026-03-08.md).
 
 ## Current Default Deployment Story
 
@@ -160,21 +160,21 @@ The broader Sonic role is deployment infrastructure and portable provisioning.
 
 ## Key Docs
 
-- provisioning contract: [docs/specs/sonic-screwdriver.md](<local-project-root>/uDOS-sonic/docs/specs/sonic-screwdriver.md)
-- integration boundary: [docs/integration-spec.md](<local-project-root>/uDOS-sonic/docs/integration-spec.md)
-- structure assessment: [docs/sonic-structure-assessment-2026-03-08.md](<local-project-root>/uDOS-sonic/docs/sonic-structure-assessment-2026-03-08.md)
-- USB build how-to: [docs/howto/build-usb.md](<local-project-root>/uDOS-sonic/docs/howto/build-usb.md)
-- dry-run how-to: [docs/howto/dry-run.md](<local-project-root>/uDOS-sonic/docs/howto/dry-run.md)
-- quickstart: [docs/howto/quickstart.md](<local-project-root>/uDOS-sonic/docs/howto/quickstart.md)
-- setup helper: [installers/setup/README.md](<local-project-root>/uDOS-sonic/installers/setup/README.md)
+- docs index: [docs/README.md](docs/README.md)
+- v2 architecture: [docs/architecture.md](docs/architecture.md)
+- v2 boundary: [docs/boundary.md](docs/boundary.md)
+- archived provisioning contract: [docs/v1/specs/sonic-screwdriver.md](docs/v1/specs/sonic-screwdriver.md)
+- archived integration boundary: [docs/v1/integration-spec.md](docs/v1/integration-spec.md)
+- archived structure assessment: [docs/v1/sonic-structure-assessment-2026-03-08.md](docs/v1/sonic-structure-assessment-2026-03-08.md)
+- setup helper: [installers/setup/README.md](installers/setup/README.md)
 
 ## Project Governance
 
-- license: [LICENSE](<local-project-root>/uDOS-sonic/LICENSE)
-- legal summary: [LEGAL.md](<local-project-root>/uDOS-sonic/LEGAL.md)
-- contributing: [CONTRIBUTING.md](<local-project-root>/uDOS-sonic/CONTRIBUTING.md)
-- contributors: [CONTRIBUTORS.md](<local-project-root>/uDOS-sonic/CONTRIBUTORS.md)
-- conduct: [CODE_OF_CONDUCT.md](<local-project-root>/uDOS-sonic/CODE_OF_CONDUCT.md)
+- license: [LICENSE](LICENSE)
+- legal summary: [LEGAL.md](LEGAL.md)
+- contributing: [CONTRIBUTING.md](CONTRIBUTING.md)
+- contributors: [CONTRIBUTORS.md](CONTRIBUTORS.md)
+- conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
 ## Development Lane
 

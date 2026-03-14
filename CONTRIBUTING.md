@@ -16,15 +16,15 @@ contracts that belong elsewhere, especially `uHOME-server`.
 
 - keep standalone docs and examples rooted in this repository
 - document breaking behavior in `README.md` and the relevant files under `docs/`
-- preserve the current repo boundary between `uDOS`, `uDOS-sonic`, and
-  `uHOME-server`
+- preserve the current repo boundary between `uDOS-core`, `uDOS-wizard`,
+  `uDOS-sonic-screwdriver`, and `uHOME-server`
 - prefer small, reviewable changes over broad speculative edits
 
 ## Public Governance
 
-- participation rules: [CODE_OF_CONDUCT.md](<local-project-root>/uDOS-sonic/CODE_OF_CONDUCT.md)
-- contributor record: [CONTRIBUTORS.md](<local-project-root>/uDOS-sonic/CONTRIBUTORS.md)
-- legal summary: [LEGAL.md](<local-project-root>/uDOS-sonic/LEGAL.md)
+- participation rules: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- contributor record: [CONTRIBUTORS.md](CONTRIBUTORS.md)
+- legal summary: [LEGAL.md](LEGAL.md)
 
 ## Local Development Lane
 

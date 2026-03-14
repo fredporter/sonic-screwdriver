@@ -240,7 +240,7 @@ Imagine this scenario:
 ## Deeper Dive: Manifest Schema
 
 For details on manifest format and validation:
-- **Full manifest spec**: See [docs/specs/sonic-screwdriver.md](../../../docs/specs/sonic-screwdriver.md)
+- **Archived manifest spec**: See [docs/v1/specs/sonic-screwdriver.md](../../../docs/v1/specs/sonic-screwdriver.md)
 - **Plan file format**: `docs/architecture/services-manifest.md` (under development)
 - **Validation rules**: Check `services/manifest/` in the repo
 - **Vault manifest examples**: [vault/manifests/README.md](../../../vault/manifests/README.md)

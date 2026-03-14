@@ -53,8 +53,5 @@ Continue your progression with advanced Sonic tracks:
 - [Course 03 - Extension and Customization](../03-extension-and-customization/README.md)
 - [Course Dependency Map](../COURSE-DEPENDENCY-MAP.md)
 
-For broader platform learning beyond Sonic, use the sibling `uDOS` course
-ladder:
-
-- [uDOS Courses README](<local-project-root>/uDOS/courses/README.md)
-- [uDOS Education Pathways](<local-project-root>/uDOS/wiki/Education-Pathways.md)
+For broader platform learning beyond Sonic, use the wider uDOS v2 family
+documentation and contract repos instead of duplicating that material here.

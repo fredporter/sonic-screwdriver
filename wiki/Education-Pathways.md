@@ -15,15 +15,11 @@ The student should come away able to:
 - inspect hardware deployment plans
 - understand manifest-driven install flows
 - use dry-run safely
-- explain where Sonic hands off to `uDOS` or `uHOME-server`
+- explain where Sonic hands off to `uDOS-core`, `uDOS-wizard`, or
+  `uHOME-server`
 
 ## Broader uDOS Learning
 
-Sonic does not need to duplicate the full `uDOS` education ladder. For broader
-platform learning, continue in the sibling repo:
-
-- [uDOS Courses README](<local-project-root>/uDOS/courses/README.md)
-- [uDOS Course 00 - Orientation](<local-project-root>/uDOS/courses/00-orientation/README.md)
-- [uDOS Course 02 - Local-First Development](<local-project-root>/uDOS/courses/02-local-first-dev/README.md)
-- [uDOS Course 03 - API and Automation](<local-project-root>/uDOS/courses/03-api-and-automation/README.md)
-- [uDOS Course 05 - Personal Infrastructure](<local-project-root>/uDOS/courses/05-personal-infrastructure/README.md)
+Sonic does not need to duplicate the full uDOS v2 learning surface. For
+broader platform learning, continue in the wider family documentation and
+contracts, especially `uDOS-docs`, `uDOS-core`, and `uDOS-wizard`.

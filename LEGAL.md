@@ -1,18 +1,18 @@
 # Legal
 
 This page summarizes the public legal and attribution boundary for
-`uDOS-sonic`.
+`uDOS-sonic-screwdriver`.
 
 ## License
 
 The repository source is licensed under the MIT license.
 
-See [LICENSE](<local-project-root>/uDOS-sonic/LICENSE).
+See [LICENSE](LICENSE).
 
 ## Repo Boundary
 
-`uDOS-sonic` is the deployment and hardware bootstrap repository in the repo
-family.
+`uDOS-sonic-screwdriver` is the deployment and hardware bootstrap repository in
+the repo family.
 
 It does not become the legal owner of external runtime contracts just because it
 can deploy them. In particular:
@@ -49,6 +49,6 @@ Local manifests, logs, device databases, downloads, and staged payloads under
 
 For contribution and participation rules, see:
 
-- [CONTRIBUTING.md](<local-project-root>/uDOS-sonic/CONTRIBUTING.md)
-- [CONTRIBUTORS.md](<local-project-root>/uDOS-sonic/CONTRIBUTORS.md)
-- [CODE_OF_CONDUCT.md](<local-project-root>/uDOS-sonic/CODE_OF_CONDUCT.md)
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+- [CONTRIBUTORS.md](CONTRIBUTORS.md)
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)

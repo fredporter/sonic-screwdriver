@@ -6,4 +6,5 @@ By the end of this course, the learner should be able to:
 - read `config/sonic-layout.json` and explain the role of each surface
 - generate and inspect a manifest safely
 - use the Linux-only smoke and dry-run workflow correctly
-- explain the family boundary between `uDOS`, `uDOS-sonic`, and `uHOME-server`
+- explain the family boundary between `uDOS-core`, `uDOS-wizard`,
+  `uDOS-sonic-screwdriver`, and `uHOME-server`

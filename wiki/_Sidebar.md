@@ -11,4 +11,4 @@
 - [Repo README](../README.md)
 - [Sonic Course](../courses/README.md)
 - [Docs](../docs/README.md)
-- [Structure Assessment](../docs/sonic-structure-assessment-2026-03-08.md)
+- [Structure Assessment](../docs/v1/sonic-structure-assessment-2026-03-08.md)

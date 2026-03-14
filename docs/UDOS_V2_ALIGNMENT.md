@@ -1,5 +1,5 @@
 
-# uDOS-sonic in the uDOS v2 Architecture
+# uDOS-sonic-screwdriver in the uDOS v2 Architecture
 
 Sonic Screwdriver is the deployment and hardware bootstrap surface of the
 uDOS v2 repo family.

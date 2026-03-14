@@ -169,7 +169,7 @@ After this path, you can:
 ### When You Need More
 
 - **How to extend Sonic?** → Look for `docs/howto/custom-extension.md` (in development)
-- **API reference?** → `docs/specs/sonic-screwdriver.md`
+- **API reference?** → `docs/v1/specs/sonic-screwdriver.md`
 - **Service contracts?** → `services/` docstrings and type hints
 
 ---
@@ -187,7 +187,7 @@ After this path, you can:
    - [ ] Key: When to attempt recovery vs. escalate
 
 2. **Diagnosis** (10 min)
-   - [ ] Reference: `docs/howto/dry-run.md` (run tests safely first)
+   - [ ] Reference: `docs/v1/howto/dry-run.md` (run tests safely first)
    - [ ] Read: Lesson 04 - Troubleshooting (under development, check back)
    - [ ] Understand: Common failure modes and diagnostic steps
 
@@ -239,8 +239,8 @@ ors
    - [ ] Complete every step (see above)
 
 2. **Deeper Dives** (30+ min)
-   - [ ] Read: [Sonic Structure Assessment](../../docs/sonic-structure-assessment-2026-03-08.md)
-   - [ ] Explore: `docs/specs/sonic-screwdriver.md`
+   - [ ] Read: [Sonic Structure Assessment](../../docs/v1/sonic-structure-assessment-2026-03-08.md)
+   - [ ] Explore: `docs/v1/specs/sonic-screwdriver.md`
    - [ ] Understand: Repo architecture and boundaries
 
 3. **Experiments** (30+ min)
@@ -250,7 +250,7 @@ ors
    - [ ] Question: What does Sonic NOT do? (boundary testing)
 
 4. **Integration Study** (30+ min)
-   - [ ] Read: `docs/integration-spec.md`
+   - [ ] Read: `docs/v1/integration-spec.md`
    - [ ] Understand: How Sonic integrates with uDOS and uHOME
    - [ ] Question: What happens at each boundary?
 
@@ -329,4 +329,3 @@ After this path, you can:
 ---
 
 **Happy learning! You've got this.** 🚀
-

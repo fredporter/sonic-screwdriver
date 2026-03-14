@@ -18,7 +18,7 @@
 
 ## v1.5.3 (2026-03-08)
 
-- Remove local `uHOME` bundle/preflight/install-plan compatibility code from `uDOS-sonic`.
+- Remove local `uHOME` bundle/preflight/install-plan compatibility code from `uDOS-sonic-screwdriver`.
 - Treat `uHOME-server` as the only canonical owner of `uHOME` install contracts.
 - Add student-facing `courses/` and `wiki/` roots and continue doc migration.
 - Introduce public `apps/`, `modules/`, `services/`, and `vault/` structure docs for the education-facing repo format.

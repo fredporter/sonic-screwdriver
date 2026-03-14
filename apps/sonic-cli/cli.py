@@ -1,4 +1,4 @@
-"""uDOS-sonic CLI.
+"""uDOS-sonic-screwdriver CLI.
 
 Usage:
   python3 apps/sonic-cli/cli.py plan --usb-device /dev/sdb
@@ -25,7 +25,7 @@ except ImportError:  # pragma: no cover - fallback for direct execution
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="uDOS-sonic CLI")
+    parser = argparse.ArgumentParser(description="uDOS-sonic-screwdriver CLI")
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     plan_cmd = sub.add_parser("plan", help="Generate ops manifest")

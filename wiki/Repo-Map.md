@@ -27,4 +27,4 @@ with `courses/` and `wiki/` layered on top for guided learning.
 
 That structure is explained in:
 
-- [../docs/sonic-structure-assessment-2026-03-08.md](../docs/sonic-structure-assessment-2026-03-08.md)
+- [../docs/v1/sonic-structure-assessment-2026-03-08.md](../docs/v1/sonic-structure-assessment-2026-03-08.md)

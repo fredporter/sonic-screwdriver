@@ -6,7 +6,7 @@ Recommended:
 - willingness to inspect config and manifest files
 - readiness to treat destructive disk actions cautiously
 
-Helpful sibling `uDOS` preparation:
+Helpful family preparation:
 
-- [uDOS Course 00 - Orientation](<local-project-root>/uDOS/courses/00-orientation/README.md)
-- [uDOS Course 02 - Local-First Development](<local-project-root>/uDOS/courses/02-local-first-dev/README.md)
+- read the current `uDOS-core` and `uDOS-wizard` READMEs
+- review `uDOS-docs` for wider family architecture context

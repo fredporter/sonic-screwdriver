@@ -1,4 +1,4 @@
-"""OS detection and limitations for uDOS-sonic."""
+"""OS detection and limitations for uDOS-sonic-screwdriver."""
 
 import platform
 from pathlib import Path

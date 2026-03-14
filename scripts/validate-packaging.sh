@@ -16,7 +16,7 @@ if [[ "$1" == "--keep-venv" ]]; then
 fi
 
 echo "==============================================="
-echo "uDOS-sonic Packaging Validation"
+echo "uDOS-sonic-screwdriver Packaging Validation"
 echo "==============================================="
 echo "OS: $(uname -s)"
 echo "Python: $(python3 --version)"

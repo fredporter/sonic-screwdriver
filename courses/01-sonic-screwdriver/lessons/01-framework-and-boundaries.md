@@ -19,8 +19,8 @@ Sonic operates within a three-part family structure:
 
 | Repo | Responsibility | Example |
 |------|---|---|
-| **uDOS** | Shared architecture language, Wizard integration, family coordination | Device profiles, bootloader config, deployment orchestration |
-| **uDOS-sonic** | Deployment planning, hardware bootstrap, provisioning execution | Planning USB deployments, applying to real hardware, rescue workflows |
+| **uDOS-core / uDOS-shell / uDOS-wizard** | Shared runtime, shell, and assist surfaces | Contracts, interaction patterns, provider-backed workflows |
+| **uDOS-sonic-screwdriver** | Deployment planning, hardware bootstrap, provisioning execution | Planning USB deployments, applying to real hardware, rescue workflows |
 | **uHOME-server** | Canonical uHOME runtime, bundle contracts, install-plan ownership | Runtime environment, package bundles, post-deployment configuration |
 
 ## The Key Educational Habit: Boundary Clarity
@@ -51,8 +51,8 @@ Your team needs to deploy a reproducible Kodi media center on a USB drive for te
 
 ### Where Each System Plays a Role
 
-**Planning Phase (uDOS core + Sonic)**:
-- `uDOS` team provides a device profile specifying hardware and target system
+**Planning Phase (uDOS-core + Sonic)**:
+- `uDOS-core` provides the deterministic contract and target runtime semantics
 - Sonic reads the profile and generates a deployment plan
 - Result: A manifest you can review and version control
 
@@ -71,7 +71,7 @@ Your team needs to deploy a reproducible Kodi media center on a USB drive for te
 - If Kodi fails, you contact the `uHOME` team, not Sonic
 
 ### What Sonic *Didn't* Do
-- Didn't write the device profile (that's `uDOS`)
+- Didn't define the runtime contract or execution semantics (that's `uDOS-core`)
 - Didn't configure Kodi plugins (that's `uHOME-server`)
 - Didn't own the post-deployment runtime (that's `uHOME-server`)
 
@@ -82,8 +82,8 @@ This is the boundary clarity in action.
 ## Deeper Dive: Architecture Details
 
 For more on how the family works together:
-- **System architecture**: See [docs/specs/sonic-screwdriver.md](../../docs/specs/sonic-screwdriver.md)
-- **Integration with uDOS**: See [docs/integration-spec.md](../../docs/integration-spec.md)
+- **Archived system architecture**: See [docs/v1/specs/sonic-screwdriver.md](../../../docs/v1/specs/sonic-screwdriver.md)
+- **Archived integration reference**: See [docs/v1/integration-spec.md](../../../docs/v1/integration-spec.md)
 - **uHOME handoff contracts**: See `uHOME-server` repo documentation
 
 ---
@@ -93,8 +93,8 @@ For more on how the family works together:
 Before moving to Lesson 02, check your understanding:
 
 **Question 1**: If a user reports "Kodi won't start after USB deployment," which repo team should handle the issue?
-- A) uDOS (family coordination)
-- B) uDOS-sonic (deployment)
+- A) uDOS-core / uDOS-wizard
+- B) uDOS-sonic-screwdriver (deployment)
 - C) uHOME-server (runtime)
 - **Answer**: C — The runtime is uHOME-server's responsibility
 

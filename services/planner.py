@@ -1,4 +1,4 @@
-"""Plan and emit uDOS-sonic USB installer manifests."""
+"""Plan and emit uDOS-sonic-screwdriver USB installer manifests."""
 
 import argparse
 import sys
