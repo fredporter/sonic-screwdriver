@@ -1,6 +1,6 @@
-# uDOS-sonic
+# uDOS-sonic-screwdriver
 
-`uDOS-sonic` is the deployment and hardware bootstrap pathway for the uDOS repo family.
+Sonic Screwdriver is the deployment layer of the uDOS v2 architecture.
 
 It is responsible for:
 
