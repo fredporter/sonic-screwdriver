@@ -22,6 +22,8 @@ deployment and packaging owner without broadening its ownership beyond:
 - `scripts/run-sonic-checks.sh` as the repo validation entrypoint
 - `examples/basic-sonic-session.md` as the smallest operator walkthrough
 - `docs/thin-gui-launcher-integration.md` as the v2.1 ThinUI launcher handoff lane
+- `docs/LIVE_INSTALL_RECOVERY_PRODUCT.md` as the active product lane reference
+- `docs/UBUNTU_VENTOY_SONIC_HANDOFF.md` as the active cross-repo handoff reference
 
 ## Current Validation Contract
 

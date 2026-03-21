@@ -39,6 +39,7 @@ Current active surfaces in this repo:
 - MCP facade over the same service layer
 - browser UI for planning and catalog inspection
 - device catalog and manifest validation
+- explicit live/install/recovery product docs and demo surfaces
 
 ## What Sonic Does Not Own
 
@@ -205,6 +206,12 @@ Run the current ThinUI NES launcher demo with:
 bash scripts/demo-thinui-launch.sh
 ```
 
+Run the current live/install/recovery product demo with:
+
+```bash
+bash scripts/demo-live-install-recovery.sh
+```
+
 For broader platform learning, use the wider uDOS v2 family docs instead of
 duplicating the same pathway structure in Sonic. Start with `uDOS-docs`,
 `uDOS-core`, and `uDOS-wizard`.
@@ -248,6 +255,8 @@ The broader Sonic role is deployment infrastructure and portable provisioning.
 - docs index: [docs/README.md](docs/README.md)
 - v2 architecture: [docs/architecture.md](docs/architecture.md)
 - v2 boundary: [docs/boundary.md](docs/boundary.md)
+- live/install/recovery product: [docs/LIVE_INSTALL_RECOVERY_PRODUCT.md](docs/LIVE_INSTALL_RECOVERY_PRODUCT.md)
+- Ubuntu/Ventoy/Sonic handoff: [docs/UBUNTU_VENTOY_SONIC_HANDOFF.md](docs/UBUNTU_VENTOY_SONIC_HANDOFF.md)
 - release policy: [docs/release-policy.md](docs/release-policy.md)
 - archived provisioning contract: [docs/v1/specs/sonic-screwdriver.md](docs/v1/specs/sonic-screwdriver.md)
 - archived integration boundary: [docs/v1/integration-spec.md](docs/v1/integration-spec.md)

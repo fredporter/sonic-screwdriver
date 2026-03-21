@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -eu
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+echo "[sonic] Live / install / recovery product demo"
+echo ""
+echo "Live lane:"
+echo "1. run first-run preflight"
+echo "2. confirm profile and media identity"
+echo "3. expose launcher and recovery entrypoints before writes"
+echo ""
+echo "Install lane:"
+echo "1. sonic plan"
+echo "2. verify manifest"
+echo "3. apply partition layout"
+echo "4. stage and apply payloads"
+echo "5. verify resulting media layout"
+echo ""
+echo "Recovery lane:"
+echo "1. select rescue-maintenance profile"
+echo "2. run dry-run verification first"
+echo "3. use payload-only or verification-only helpers when needed"
+echo "4. capture logs and deployment notes for escalation"
+echo ""
+echo "[sonic] Core evidence surfaces"
+echo "- scripts/first-run-preflight.sh"
+echo "- scripts/sonic-stick.sh --dry-run"
+echo "- scripts/smoke/ubuntu-ventoy-integration-smoke.sh"
+echo "- vault/manifests/reference-rescue-maintenance-dry-run.manifest.json"
+echo "- vault/deployment-notes/recovery-escalation-example.md"

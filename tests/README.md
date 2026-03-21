@@ -9,6 +9,7 @@ Current coverage includes:
 - deployment planner and runtime service helpers
 - Linux smoke workflow path references
 - lightweight HTTP API behavior
+- product-lane documentation and demo script coverage
 
 Phase 1 rule:
 

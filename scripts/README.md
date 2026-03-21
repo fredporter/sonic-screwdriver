@@ -10,6 +10,7 @@ Current script surfaces include:
 - `smoke/uhome-contract-conformance.sh` for cross-repo `uHOME-server` and Wizard contract conformance checks
 - `run-sonic-checks.sh` for repo activation validation
 - `first-run-preflight.sh` for first-run validation, v2 root checks, and OS-aware quickstart probes
+- `demo-live-install-recovery.sh` for the active live/install/recovery product lane
 
 Boundary rule:
 

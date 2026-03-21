@@ -9,9 +9,12 @@
 7. For v2.0.6 Ubuntu/Ventoy wiring, use `sonic init`, `sonic add`, `sonic update`, and `sonic theme`.
 8. On Linux, run `scripts/smoke/ubuntu-ventoy-integration-smoke.sh` to verify end-to-end template/profile wiring.
 9. For v2.1 Thin GUI launcher handoff, review `docs/thin-gui-launcher-integration.md`.
+10. For v2.3 productization, review `docs/LIVE_INSTALL_RECOVERY_PRODUCT.md` and run `bash scripts/demo-live-install-recovery.sh`.
 
 For deeper deployment material, continue with:
 
 - `DEPLOYMENT_MODEL.md`
 - `MACHINE_PROFILES.md`
+- `LIVE_INSTALL_RECOVERY_PRODUCT.md`
+- `UBUNTU_VENTOY_SONIC_HANDOFF.md`
 - `v1/howto/quickstart.md`

@@ -22,3 +22,17 @@ verify
 stage payloads
   ↓
 deploy to device
+
+## Product Interpretation
+
+In the active `v2.3` lane, that model is expressed as three operator-visible
+product surfaces:
+
+- live media
+- install media
+- recovery media
+
+See:
+
+- `LIVE_INSTALL_RECOVERY_PRODUCT.md`
+- `UBUNTU_VENTOY_SONIC_HANDOFF.md`
