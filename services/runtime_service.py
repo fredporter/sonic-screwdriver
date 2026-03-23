@@ -41,7 +41,7 @@ class SonicService:
         payloads_dir: str | None = None,
         format_mode: str | None = None,
     ) -> dict[str, Any]:
-        if not is_supported():
+        if not is_supported() and not dry_run:
             raise ValueError("Unsupported OS for build operations. Use Linux.")
         out_path = self._resolve_repo_path(out) if out else self.manifest_path
         layout_path = self._resolve_repo_path(layout_file) if layout_file else None

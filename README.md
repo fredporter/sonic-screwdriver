@@ -71,6 +71,12 @@ This command performs four checks:
 - cross-repo `uHOME` contract conformance probe (when sibling repos exist)
   - `scripts/smoke/uhome-contract-conformance.sh`
 
+Platform boundary:
+
+- macOS supports repo validation, API/MCP, UI, catalog work, and dry-run planning
+- Linux is required for real partitioning, formatting, mounting, and device writes
+- Windows remains unsupported for Sonic build/apply operations
+
 ## Starter CLI
 
 Sonic now starts from the CLI surface first, then hands off to the browser GUI.
@@ -110,6 +116,23 @@ open ./scripts/first-run-launch.command
 ## Quick Start (Linux)
 
 After preflight passes, run the Linux deployment quickstart:
+
+If you are on macOS, you can still validate the non-destructive path first:
+
+```bash
+sonic plan \
+  --usb-device /dev/sdz \
+  --dry-run \
+  --out /tmp/sonic-manifest.json
+
+bash scripts/sonic-stick.sh \
+  --manifest /tmp/sonic-manifest.json \
+  --dry-run
+```
+
+Those commands validate planning, manifest generation, layout synthesis, and
+payload-stage wiring without touching a real block device. Real apply remains
+Linux-only.
 
 Install editable CLI entrypoints:
 
@@ -166,6 +189,11 @@ Run the Linux smoke workflow:
 bash scripts/smoke/linux-runtime-smoke.sh
 ```
 
+For a real Linux box/runbook, use
+`docs/v1/howto/linux-runner-validation.md`.
+For a one-command runner on Ubuntu/Alpine, use
+`bash scripts/linux-runner-validation.sh`.
+
 ## Ubuntu And Ventoy Integration (v2.0.6 Round B)
 
 Sonic now exposes an explicit integration lane for the `uDOS-ubuntu` profile
@@ -205,7 +233,8 @@ sonic theme retro --stick-root memory/sonic/artifacts/sonic-stick
 
 OS boundary:
 
-- `sonic init` is Linux-only (full creation path)
+- `sonic init` is Linux-only for the CLI path, but the underlying file
+  integration helpers can be validated on macOS during development
 - `sonic add`, `sonic update`, and `sonic theme` are Linux/macOS maintenance commands
 - Windows remains unsupported for Sonic build operations
 

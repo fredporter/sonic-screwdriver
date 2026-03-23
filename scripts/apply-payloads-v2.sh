@@ -40,9 +40,12 @@ init_logging "apply-payloads-v2"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 OS_NAME="$(sonic_detect_os)"
-if [[ "$OS_NAME" != "alpine" && "$OS_NAME" != "ubuntu" ]]; then
+if [[ "$OS_NAME" != "alpine" && "$OS_NAME" != "ubuntu" && "$DRY_RUN" -eq 0 ]]; then
   log_error "Unsupported OS: $OS_NAME (requires Alpine/Ubuntu Linux)"
   exit 1
+fi
+if [[ "$OS_NAME" != "alpine" && "$OS_NAME" != "ubuntu" && "$DRY_RUN" -eq 1 ]]; then
+  log_warn "Non-Linux dry-run mode enabled. Skipping mounts and writes."
 fi
 
 if [[ -z "$MANIFEST" || ! -f "$MANIFEST" ]]; then

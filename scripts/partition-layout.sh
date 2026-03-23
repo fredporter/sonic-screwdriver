@@ -30,9 +30,12 @@ init_logging "partition-layout"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 OS_NAME="$(sonic_detect_os)"
-if [[ "$OS_NAME" != "alpine" && "$OS_NAME" != "ubuntu" ]]; then
+if [[ "$OS_NAME" != "alpine" && "$OS_NAME" != "ubuntu" && "$DRY_RUN" -eq 0 ]]; then
   log_error "Unsupported OS: $OS_NAME (requires Alpine/Ubuntu Linux)"
   exit 1
+fi
+if [[ "$OS_NAME" != "alpine" && "$OS_NAME" != "ubuntu" && "$DRY_RUN" -eq 1 ]]; then
+  log_warn "Non-Linux dry-run mode enabled. Skipping block-device checks."
 fi
 
 if [[ -z "$MANIFEST" || ! -f "$MANIFEST" ]]; then
@@ -49,22 +52,26 @@ print(data.get('usb_device',''))
 PY
 )"
 
-if [[ -z "$USB" || ! -b "$USB" ]]; then
+DEVICE_BYTES=""
+if [[ -n "$USB" && -b "$USB" ]]; then
+  DEVICE_BYTES="$(lsblk -b -dn -o SIZE "$USB" 2>/dev/null || echo "")"
+fi
+
+if [[ "$DRY_RUN" -eq 0 && ( -z "$USB" || ! -b "$USB" ) ]]; then
   log_error "USB device '$USB' not found or not a block device."
   exit 1
 fi
 
-DEVICE_BYTES="$(lsblk -b -dn -o SIZE "$USB" 2>/dev/null || echo "")"
-if [[ -z "$DEVICE_BYTES" ]]; then
+if [[ "$DRY_RUN" -eq 0 && -z "$DEVICE_BYTES" ]]; then
   log_error "Unable to read device size for $USB"
   exit 1
 fi
 
-PLAN_OUTPUT="$(python3 - "$MANIFEST" "$DEVICE_BYTES" <<'PY'
+PLAN_OUTPUT="$(python3 - "$MANIFEST" "${DEVICE_BYTES:-}" <<'PY'
 import json,sys,math
 manifest_path=sys.argv[1]
-size_bytes=int(sys.argv[2])
-size_gib=size_bytes/(1024**3)
+size_bytes_raw=sys.argv[2].strip() if len(sys.argv) > 2 else ""
+size_gib=(int(size_bytes_raw)/(1024**3)) if size_bytes_raw else None
 with open(manifest_path,'r') as f:
     data=json.load(f)
 parts=data.get('partitions') or []
@@ -84,9 +91,10 @@ non_scalable=[p for p in fixed if not p.get('scalable')]
 min_total=sum(float(p.get('min_size_gb',0) or 0) for p in scalable)
 non_scale_total=sum(float(p.get('size_gb',0) or 0) for p in non_scalable)
 
-message=f"device={size_gib:.2f}GiB fixed={fixed_sum:.2f}GiB"
-
-if fixed_sum > size_gib:
+if size_gib is None:
+    print(f"STATUS|OK|dry-run without device-size validation (fixed={fixed_sum:.2f}GiB)")
+elif fixed_sum > size_gib:
+    message=f"device={size_gib:.2f}GiB fixed={fixed_sum:.2f}GiB"
     if not scalable:
         print(f"STATUS|ERROR|fixed sizes exceed device ({message})")
         sys.exit(3)
@@ -112,6 +120,7 @@ if fixed_sum > size_gib:
     else:
         print(f"STATUS|OK|auto-scaled to fit ({message})")
 elif fixed_sum < size_gib and not remainder:
+    message=f"device={size_gib:.2f}GiB fixed={fixed_sum:.2f}GiB"
     if scalable:
         available=size_gib - non_scale_total
         scale_base=sum(float(p.get('size_gb',0) or 0) for p in scalable)
@@ -127,6 +136,7 @@ elif fixed_sum < size_gib and not remainder:
     else:
         print(f"STATUS|SUGGEST|unused space detected; add remainder partition ({message})")
 else:
+    message=f"device={size_gib:.2f}GiB fixed={fixed_sum:.2f}GiB"
     print(f"STATUS|OK|layout fits ({message})")
 
 for p in parts:

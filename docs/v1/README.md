@@ -24,6 +24,7 @@
 - howto/development-install.md
 - howto/production-install.md
 - howto/cross-platform-validation.md
+- howto/linux-runner-validation.md
 - ../LEGAL.md
 - ../CONTRIBUTING.md
 - ../CONTRIBUTORS.md
@@ -52,6 +53,8 @@
   older specs now live in `docs/.compost/`
 - `pyproject.toml` plus `installers/setup/` define the current editable install
   path for Sonic operator entrypoints
+- macOS now supports non-destructive dry-run validation for planning and
+  `sonic-stick.sh`, but destructive disk operations remain Linux-only
 - local `@dev` / binder workflow state is intentionally excluded from tracked
   repo content; the public repo keeps only reviewed outputs
 

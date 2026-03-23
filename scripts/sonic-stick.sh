@@ -54,9 +54,12 @@ done
 
 source "${SCRIPT_DIR}/lib/logging.sh"
 OS_NAME="$(sonic_detect_os)"
-if [[ "$OS_NAME" != "alpine" && "$OS_NAME" != "ubuntu" ]]; then
+if [[ "$OS_NAME" != "alpine" && "$OS_NAME" != "ubuntu" && "$DRY_RUN" -eq 0 ]]; then
   echo "ERROR Sonic Screwdriver requires Linux (Ubuntu/Alpine) for build operations."
   exit 1
+fi
+if [[ "$OS_NAME" != "alpine" && "$OS_NAME" != "ubuntu" && "$DRY_RUN" -eq 1 ]]; then
+  echo "WARN Non-Linux dry-run mode enabled. Device writes and mounts are skipped."
 fi
 
 if [[ -z "$MANIFEST" ]]; then
@@ -79,7 +82,7 @@ PY
 )"
 
 # Re-exec with sudo for device access
-if [[ $EUID -ne 0 && -z "${SONIC_SUDO_REEXEC:-}" ]]; then
+if [[ $EUID -ne 0 && -z "${SONIC_SUDO_REEXEC:-}" && "$DRY_RUN" -eq 0 ]]; then
   exec sudo -E SONIC_SUDO_REEXEC=1 USB="$USB" bash "$0" "${ORIG_ARGS[@]}"
 fi
 

@@ -9,6 +9,9 @@ Verify that `pip install udos-sonic` works correctly on:
 - **Linux** (USB target primary)
 - **Windows/WSL** (developer secondary)
 
+This document is about packaging and install validation. For the real
+Linux-only deployment lane, use [linux-runner-validation.md](linux-runner-validation.md).
+
 ## Validation Scripts
 
 Two automated scripts are provided:
@@ -33,6 +36,15 @@ Each script validates:
    - `sonic-api`
    - `sonic-mcp`
 5. **Extension example** - Custom build engine example executes
+
+This packaging validation does not prove:
+
+- real block-device discovery
+- partition table writes
+- filesystem formatting
+- payload mounting or device writes
+
+Those remain Linux-runner checks.
 
 ## Usage
 

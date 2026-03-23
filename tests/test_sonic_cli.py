@@ -12,10 +12,10 @@ cli = importlib.util.module_from_spec(CLI_SPEC)
 CLI_SPEC.loader.exec_module(cli)
 
 
-def test_plan_command_rejects_unsupported_platform(monkeypatch, capsys) -> None:
+def test_plan_command_rejects_unsupported_platform_for_non_dry_run(monkeypatch, capsys) -> None:
     monkeypatch.setattr(cli, "support_message", lambda: "WARN Linux only")
     monkeypatch.setattr(cli, "is_supported", lambda: False)
-    monkeypatch.setattr(cli.sys, "argv", ["cli.py", "plan", "--dry-run"])
+    monkeypatch.setattr(cli.sys, "argv", ["cli.py", "plan"])
 
     exit_code = cli.main()
 
@@ -23,6 +23,40 @@ def test_plan_command_rejects_unsupported_platform(monkeypatch, capsys) -> None:
     assert exit_code == 1
     assert "WARN Linux only" in captured.out
     assert "ERROR Unsupported OS for build operations. Use Linux." in captured.out
+
+
+def test_plan_command_allows_unsupported_platform_for_dry_run(monkeypatch, tmp_path: Path, capsys) -> None:
+    calls: dict[str, object] = {}
+
+    monkeypatch.setattr(cli, "support_message", lambda: "WARN Linux only")
+    monkeypatch.setattr(cli, "is_supported", lambda: False)
+
+    def fake_write_plan(**kwargs: object) -> dict[str, object]:
+        calls.update(kwargs)
+        return {"ok": True}
+
+    monkeypatch.setattr(cli, "write_plan", fake_write_plan)
+    monkeypatch.setattr(
+        cli.sys,
+        "argv",
+        [
+            "cli.py",
+            "plan",
+            "--repo-root",
+            str(tmp_path),
+            "--dry-run",
+            "--out",
+            "memory/sonic/test-manifest.json",
+        ],
+    )
+
+    exit_code = cli.main()
+
+    captured = capsys.readouterr()
+    assert exit_code == 0
+    assert "Plan written: memory/sonic/test-manifest.json" in captured.out
+    assert "Dry run enabled. No destructive operations should be executed." in captured.out
+    assert calls["dry_run"] is True
 
 
 def test_plan_command_writes_plan_with_repo_root(monkeypatch, tmp_path: Path, capsys) -> None:

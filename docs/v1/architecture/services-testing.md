@@ -10,11 +10,28 @@ Runtime service:
 - `tests/test_runtime_service.py`
 - covers unsupported OS rejection and repo-relative path resolution in
   `SonicService.build_plan(...)`
+- covers merged device catalog precedence, filtering, and pagination
+- covers end-to-end `build_plan(...)` -> `get_manifest_status(...)`
+
+Manifest validation:
+
+- `tests/test_manifest_validation.py`
+- covers payload-reference warnings, surface/nav/boot-target link validation,
+  and default-boot/boot-mode/format-mode contract checks
 
 HTTP API:
 
 - `tests/test_http_api.py`
 - covers `POST /api/sonic/plan` error mapping (`ValueError` -> HTTP 400)
+- covers `GET /api/sonic/devices`, `GET /api/sonic/schema`, and
+  `GET /api/sonic/manifest/verify` argument/response wiring
+- covers `POST /api/sonic/bootstrap/current`
+
+MCP facade:
+
+- `tests/test_mcp_server.py`
+- covers `initialize`, `tools/list`, and `tools/call` contract envelopes for
+  `sonic_devices` and `sonic_manifest_verify`
 
 CLI integration:
 
@@ -35,13 +52,18 @@ Packaging entrypoints:
 ## Recommended Test Commands
 
 ```bash
-pytest tests/test_runtime_service.py tests/test_http_api.py tests/test_sonic_cli.py
+./.venv/bin/python -m pytest \
+  tests/test_runtime_service.py \
+  tests/test_manifest_validation.py \
+  tests/test_http_api.py \
+  tests/test_mcp_server.py \
+  tests/test_sonic_cli.py
 ```
 
 Optional wider pass:
 
 ```bash
-pytest tests/test_linux_smoke_script.py tests/test_packaging_setup.py
+./.venv/bin/python -m pytest
 ```
 
 ## Pattern: Service Method Unit Test
@@ -73,13 +95,13 @@ Assert both terminal output and call arguments.
 
 ## Gaps to Add Next
 
-1. Manifest validator deep tests (`validate_manifest_data`) for surfaces,
-   boot targets, and payload reference checks.
-2. Device catalog merge tests verifying user-overlay precedence by ID.
-3. Pagination/filter tests for `list_devices(...)` edge cases.
-4. MCP tool contract tests for `sonic_plan`, `sonic_devices`, and
-   `sonic_manifest_verify`.
-5. End-to-end integration test combining plan generation and manifest verify.
+1. Add HTTP API tests for `GET /api/sonic/health`, `GET /api/sonic/gui/summary`,
+   and `GET /api/sonic/db/*` routes.
+2. Add MCP tool tests for `sonic_plan` and database actions.
+3. Add a launcher/bootstrap smoke test that exercises the browser/API handoff
+   without opening an external browser.
+4. Add Linux-runner coverage for `sonic init` and the Ubuntu/Ventoy integration
+   flow from the service/CLI layer.
 
 ## Stability Guidance
 

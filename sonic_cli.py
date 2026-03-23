@@ -376,7 +376,7 @@ def _dispatch(argv: list[str], repo_root: Path, interactive: bool = False) -> in
 
     if args.cmd == "plan":
         print(support_message())
-        if not is_supported():
+        if not is_supported() and not args.dry_run:
             print("ERROR Unsupported OS for build operations. Use Linux.")
             return 1
         try:

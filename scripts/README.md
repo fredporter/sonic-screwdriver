@@ -5,6 +5,8 @@
 Current script surfaces include:
 
 - `sonic-stick.sh` for device-apply execution
+- `linux-runner-validation.sh` for one-command Ubuntu/Alpine validation of the
+  real Linux deployment lane
 - `validate-packaging.sh` for packaging verification
 - `smoke/linux-runtime-smoke.sh` for Linux runtime smoke coverage
 - `smoke/uhome-contract-conformance.sh` for cross-repo `uHOME-server` and Wizard contract conformance checks
@@ -17,5 +19,7 @@ Current script surfaces include:
 Boundary rule:
 
 - keep device-apply, packaging, and machine-profile helpers here
+- keep dry-run validation broadly portable, but keep destructive device writes
+  Linux-only
 - keep canonical runtime semantics in `uDOS-core`
 - keep persistent local-service runtime ownership in `uHOME-server`
