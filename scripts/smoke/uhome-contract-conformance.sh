@@ -6,9 +6,23 @@ REPO_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 WORKSPACE_ROOT="${SONIC_WORKSPACE_ROOT:-$(cd "${REPO_ROOT}/.." && pwd)}"
 UHOME_SERVER_ROOT="${SONIC_UHOME_SERVER_ROOT:-${WORKSPACE_ROOT}/uHOME-server}"
 WIZARD_ROOT="${SONIC_WIZARD_ROOT:-${WORKSPACE_ROOT}/uDOS-wizard}"
+SHARED_PYTHON_BIN="${UDOS_SHARED_PYTHON_BIN:-}"
+USE_SHARED_RESOURCES="${UDOS_USE_SHARED_RESOURCES:-1}"
 PYTHON_BIN="${REPO_ROOT}/.venv/bin/python"
 
-if [[ ! -x "${PYTHON_BIN}" ]]; then
+if [[ "${USE_SHARED_RESOURCES}" == "1" && -z "${SHARED_PYTHON_BIN}" ]]; then
+  FAMILY_HELPER="${REPO_ROOT}/../scripts/lib/family-python.sh"
+  if [[ -f "${FAMILY_HELPER}" ]]; then
+    # shellcheck source=/dev/null
+    . "${FAMILY_HELPER}"
+    ensure_shared_python
+    SHARED_PYTHON_BIN="${UDOS_SHARED_PYTHON_BIN:-}"
+  fi
+fi
+
+if [[ -n "${SHARED_PYTHON_BIN}" && -x "${SHARED_PYTHON_BIN}" ]]; then
+  PYTHON_BIN="${SHARED_PYTHON_BIN}"
+elif [[ ! -x "${PYTHON_BIN}" ]]; then
   PYTHON_BIN="python3"
 fi
 

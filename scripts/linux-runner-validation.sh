@@ -5,6 +5,9 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 REPO_PARENT="$(cd "${REPO_ROOT}/.." && pwd)"
+SHARED_PYTHON_BIN="${UDOS_SHARED_PYTHON_BIN:-}"
+USE_SHARED_RESOURCES="${UDOS_USE_SHARED_RESOURCES:-1}"
+SONIC_BIN="${REPO_ROOT}/.venv/bin/sonic"
 
 DRY_RUN_MANIFEST="${SONIC_LINUX_DRY_RUN_MANIFEST:-/tmp/sonic-linux-dry-run.json}"
 TARGET_USB="${SONIC_TARGET_USB:-}"
@@ -71,6 +74,20 @@ if [[ "$(uname -s)" != "Linux" ]]; then
   exit 1
 fi
 
+if [[ "${USE_SHARED_RESOURCES}" == "1" && -z "${SHARED_PYTHON_BIN}" ]]; then
+  FAMILY_HELPER="${REPO_ROOT}/../scripts/lib/family-python.sh"
+  if [[ -f "${FAMILY_HELPER}" ]]; then
+    # shellcheck source=/dev/null
+    . "${FAMILY_HELPER}"
+    ensure_shared_python
+    SHARED_PYTHON_BIN="${UDOS_SHARED_PYTHON_BIN:-}"
+  fi
+fi
+if [[ -n "${SHARED_PYTHON_BIN}" && -x "${SHARED_PYTHON_BIN}" ]]; then
+  SHARED_BIN_DIR="$(cd "$(dirname "${SHARED_PYTHON_BIN}")" && pwd)"
+  SONIC_BIN="${SHARED_BIN_DIR}/sonic"
+fi
+
 require_cmd bash
 require_cmd python3
 require_cmd node
@@ -93,7 +110,7 @@ run_cmd bash scripts/run-sonic-checks.sh
 run_cmd bash scripts/first-run-preflight.sh
 
 header "2. CLI Dry-Run"
-run_cmd ./.venv/bin/sonic plan \
+run_cmd "${SONIC_BIN}" plan \
   --usb-device /dev/sdz \
   --dry-run \
   --out "$DRY_RUN_MANIFEST"
@@ -143,7 +160,7 @@ if [[ "$RUN_REAL_APPLY" == "1" ]]; then
     exit 1
   fi
 
-  run_cmd ./.venv/bin/sonic plan \
+  run_cmd "${SONIC_BIN}" plan \
     --usb-device "$TARGET_USB" \
     --out memory/sonic/sonic-manifest.json
 

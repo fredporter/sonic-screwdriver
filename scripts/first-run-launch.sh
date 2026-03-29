@@ -5,6 +5,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 RUN_DIR="${REPO_ROOT}/.run"
+SHARED_PYTHON_BIN="${UDOS_SHARED_PYTHON_BIN:-}"
+USE_SHARED_RESOURCES="${UDOS_USE_SHARED_RESOURCES:-1}"
 VENV_DIR="${REPO_ROOT}/.venv"
 PYTHON_BIN="${VENV_DIR}/bin/python"
 SONIC_BIN="${VENV_DIR}/bin/sonic"
@@ -76,7 +78,22 @@ require_cmd bash
 mkdir -p "${RUN_DIR}"
 cd "${REPO_ROOT}"
 
-if [[ ! -x "${PYTHON_BIN}" ]]; then
+if [[ "${USE_SHARED_RESOURCES}" == "1" && -z "${SHARED_PYTHON_BIN}" ]]; then
+  FAMILY_HELPER="${REPO_ROOT}/../scripts/lib/family-python.sh"
+  if [[ -f "${FAMILY_HELPER}" ]]; then
+    # shellcheck source=/dev/null
+    . "${FAMILY_HELPER}"
+    ensure_shared_python
+    SHARED_PYTHON_BIN="${UDOS_SHARED_PYTHON_BIN:-}"
+  fi
+fi
+
+if [[ -n "${SHARED_PYTHON_BIN}" && -x "${SHARED_PYTHON_BIN}" ]]; then
+  SHARED_BIN_DIR="$(cd "$(dirname "${SHARED_PYTHON_BIN}")" && pwd)"
+  PYTHON_BIN="${SHARED_PYTHON_BIN}"
+  SONIC_BIN="${SHARED_BIN_DIR}/sonic"
+  API_BIN="${SHARED_BIN_DIR}/sonic-api"
+elif [[ ! -x "${PYTHON_BIN}" ]]; then
   echo "Creating Sonic virtual environment..."
   python3 -m venv "${VENV_DIR}"
   "${PYTHON_BIN}" -m pip install --upgrade pip setuptools wheel

@@ -3,23 +3,39 @@
 # Tests clean virtual environment installation and import paths
 # Usage: ./scripts/validate-packaging.sh [--keep-venv]
 
-set -e
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+SHARED_PYTHON_BIN="${UDOS_SHARED_PYTHON_BIN:-}"
+USE_SHARED_RESOURCES="${UDOS_USE_SHARED_RESOURCES:-1}"
+BASE_PYTHON_BIN="${PYTHON:-python3}"
 VENV_DIR="/tmp/udos-sonic-validation-$$"
 KEEP_VENV=false
 
 # Parse arguments
-if [[ "$1" == "--keep-venv" ]]; then
+if [[ "${1:-}" == "--keep-venv" ]]; then
     KEEP_VENV=true
+fi
+
+if [[ "${USE_SHARED_RESOURCES}" == "1" && -z "${SHARED_PYTHON_BIN}" ]]; then
+    FAMILY_HELPER="${REPO_ROOT}/../scripts/lib/family-python.sh"
+    if [[ -f "${FAMILY_HELPER}" ]]; then
+        # shellcheck source=/dev/null
+        . "${FAMILY_HELPER}"
+        ensure_shared_python
+        SHARED_PYTHON_BIN="${UDOS_SHARED_PYTHON_BIN:-}"
+    fi
+fi
+if [[ -n "${SHARED_PYTHON_BIN}" && -x "${SHARED_PYTHON_BIN}" ]]; then
+    BASE_PYTHON_BIN="${SHARED_PYTHON_BIN}"
 fi
 
 echo "==============================================="
 echo "uDOS-sonic-screwdriver Packaging Validation"
 echo "==============================================="
 echo "OS: $(uname -s)"
-echo "Python: $(python3 --version)"
+echo "Python: $(${BASE_PYTHON_BIN} --version)"
 echo "Repo: $REPO_ROOT"
 echo "Test venv: $VENV_DIR"
 echo "==============================================="
@@ -38,7 +54,7 @@ cleanup() {
 trap cleanup EXIT
 
 echo "Step 1: Create clean virtual environment"
-python3 -m venv "$VENV_DIR"
+"${BASE_PYTHON_BIN}" -m venv "$VENV_DIR"
 source "$VENV_DIR/bin/activate"
 
 echo "✓ Virtual environment created"

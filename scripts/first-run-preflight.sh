@@ -4,7 +4,11 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+SHARED_PYTHON_BIN="${UDOS_SHARED_PYTHON_BIN:-}"
+USE_SHARED_RESOURCES="${UDOS_USE_SHARED_RESOURCES:-1}"
 VENV_PYTHON="${REPO_ROOT}/.venv/bin/python"
+SONIC_BIN="${REPO_ROOT}/.venv/bin/sonic"
+SONIC_API_BIN="${REPO_ROOT}/.venv/bin/sonic-api"
 API_PORT="${SONIC_FIRST_RUN_PORT:-8991}"
 API_PID=""
 API_LOG=""
@@ -22,6 +26,23 @@ cleanup() {
 trap cleanup EXIT
 
 cd "${REPO_ROOT}"
+
+if [[ "${USE_SHARED_RESOURCES}" == "1" && -z "${SHARED_PYTHON_BIN}" ]]; then
+  FAMILY_HELPER="${REPO_ROOT}/../scripts/lib/family-python.sh"
+  if [[ -f "${FAMILY_HELPER}" ]]; then
+    # shellcheck source=/dev/null
+    . "${FAMILY_HELPER}"
+    ensure_shared_python
+    SHARED_PYTHON_BIN="${UDOS_SHARED_PYTHON_BIN:-}"
+  fi
+fi
+
+if [[ -n "${SHARED_PYTHON_BIN}" && -x "${SHARED_PYTHON_BIN}" ]]; then
+  SHARED_BIN_DIR="$(cd "$(dirname "${SHARED_PYTHON_BIN}")" && pwd)"
+  VENV_PYTHON="${SHARED_PYTHON_BIN}"
+  SONIC_BIN="${SHARED_BIN_DIR}/sonic"
+  SONIC_API_BIN="${SHARED_BIN_DIR}/sonic-api"
+fi
 
 echo "[1/5] Repo validation"
 bash "${SCRIPT_DIR}/run-sonic-checks.sh"
@@ -70,7 +91,7 @@ echo "v2 structure check passed."
 echo "[3/5] Quickstart preflight"
 os_name="$(uname -s)"
 if [[ "${os_name}" == "Linux" ]]; then
-  "${REPO_ROOT}/.venv/bin/sonic" plan \
+  "${SONIC_BIN}" plan \
     --usb-device /dev/sdz \
     --dry-run \
     --out memory/sonic/sonic-manifest.json
@@ -80,7 +101,7 @@ else
   echo "Build/apply commands are Linux-only, running API health preflight instead."
 
   API_LOG="$(mktemp "${TMPDIR:-/tmp}/sonic-first-run-api.XXXXXX.log")"
-  "${REPO_ROOT}/.venv/bin/sonic-api" --host 127.0.0.1 --port "${API_PORT}" >"${API_LOG}" 2>&1 &
+  "${SONIC_API_BIN}" --host 127.0.0.1 --port "${API_PORT}" >"${API_LOG}" 2>&1 &
   API_PID=$!
 
   for _ in {1..20}; do
