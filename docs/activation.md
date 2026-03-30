@@ -1,9 +1,9 @@
-# uDOS-sonic-screwdriver Activation
+# sonic-screwdriver Activation
 
 ## Purpose
 
 This document marks the first active implementation tranche for
-`uDOS-sonic-screwdriver`.
+`sonic-screwdriver`.
 
 The activation goal is to make Sonic runnable, testable, and teachable as the
 deployment and packaging owner without broadening its ownership beyond:

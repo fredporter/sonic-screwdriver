@@ -60,7 +60,7 @@ Generate your first manifest *in dry-run mode* (safe, no changes):
 
 ```bash
 # Edit installers/setup/ to match your environment, then:
-cd /path/to/uDOS-sonic-screwdriver
+cd /path/to/sonic-screwdriver
 
 # Install Sonic CLI (first time only)
 bash installers/setup/install-sonic-editable.sh

@@ -1,7 +1,7 @@
 # Sonic Apps
 
 `apps/` contains the user-facing entry surfaces for
-`uDOS-sonic-screwdriver`.
+`sonic-screwdriver`.
 
 Current mapping:
 

@@ -1,6 +1,6 @@
-# uDOS-sonic-screwdriver Structure Policy
+# sonic-screwdriver Structure Policy
 
-`uDOS-sonic-screwdriver` is a packaging and deployment-specialized repo with a broader public structure than a minimal package repo.
+`sonic-screwdriver` is a packaging and deployment-specialized repo with a broader public structure than a minimal package repo.
 
 ## Canonical Public Roots
 

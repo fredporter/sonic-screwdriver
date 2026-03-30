@@ -20,7 +20,7 @@ Sonic operates within a three-part family structure:
 | Repo | Responsibility | Example |
 |------|---|---|
 | **uDOS-core / uDOS-shell / uDOS-wizard** | Shared runtime, shell, and assist surfaces | Contracts, interaction patterns, provider-backed workflows |
-| **uDOS-sonic-screwdriver** | Deployment planning, hardware bootstrap, provisioning execution | Planning USB deployments, applying to real hardware, rescue workflows |
+| **sonic-screwdriver** | Deployment planning, hardware bootstrap, provisioning execution | Planning USB deployments, applying to real hardware, rescue workflows |
 | **uHOME-server** | Canonical uHOME runtime, bundle contracts, install-plan ownership | Runtime environment, package bundles, post-deployment configuration |
 
 ## The Key Educational Habit: Boundary Clarity
@@ -94,7 +94,7 @@ Before moving to Lesson 02, check your understanding:
 
 **Question 1**: If a user reports "Kodi won't start after USB deployment," which repo team should handle the issue?
 - A) uDOS-core / uDOS-wizard
-- B) uDOS-sonic-screwdriver (deployment)
+- B) sonic-screwdriver (deployment)
 - C) uHOME-server (runtime)
 - **Answer**: C — The runtime is uHOME-server's responsibility
 

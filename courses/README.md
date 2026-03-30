@@ -1,4 +1,4 @@
-# uDOS-sonic-screwdriver Courses
+# sonic-screwdriver Courses
 
 This root is the Sonic education lane for deployment, operations, and extension
 work.

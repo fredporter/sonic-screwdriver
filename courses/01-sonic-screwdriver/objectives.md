@@ -7,4 +7,4 @@ By the end of this course, the learner should be able to:
 - generate and inspect a manifest safely
 - use the Linux-only smoke and dry-run workflow correctly
 - explain the family boundary between `uDOS-core`, `uDOS-wizard`,
-  `uDOS-sonic-screwdriver`, and `uHOME-server`
+  `sonic-screwdriver`, and `uHOME-server`

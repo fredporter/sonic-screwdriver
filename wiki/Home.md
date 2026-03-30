@@ -2,14 +2,13 @@
 
 Updated: 2026-03-09
 
-This wiki is the student-facing orientation layer for
-`uDOS-sonic-screwdriver`.
+This wiki is the student-facing orientation layer for `sonic-screwdriver`.
 
 Use it when you want the shortest path to understanding:
 
 - what Sonic is
 - what it owns
-- how it relates to `uDOS` and `uHOME-server`
+- how it relates to `uDOS-ubuntu`, `uDOS-wizard`, and `uHOME`
 - where to start learning
 
 When you want implementation detail, move from the wiki into the Sonic course
@@ -38,6 +37,8 @@ runtime of every system it can install.
 
 Current family split:
 
-- `uDOS-core` / `uDOS-shell` / `uDOS-wizard` = shared runtime, shell, and assist surfaces
-- `uDOS-sonic-screwdriver` = deployment and hardware bootstrap
-- `uHOME-server` = canonical `uHOME` runtime contracts
+- `uDOS-core` / `uDOS-shell` = shared semantic and shell surfaces
+- `uDOS-ubuntu` = always-on command-centre runtime
+- `uDOS-wizard` = provider, assist, MCP, and remote publishing adapters
+- `sonic-screwdriver` = deployment and hardware bootstrap
+- `uHOME-server` = downstream `uHOME` service stream

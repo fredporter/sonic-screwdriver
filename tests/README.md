@@ -1,6 +1,6 @@
 # Tests
 
-`tests/` is the current validation lane for `uDOS-sonic-screwdriver`.
+`tests/` is the current validation lane for `sonic-screwdriver`.
 
 Current coverage includes:
 

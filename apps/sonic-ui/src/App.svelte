@@ -41,7 +41,7 @@
     <header class="flex flex-col gap-4">
       <div class="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-neon-blue">
         <span class="h-[1px] w-10 bg-neon-blue"></span>
-        uDOS-sonic-screwdriver
+        sonic-screwdriver
       </div>
       <div class="flex flex-col gap-3">
         <h1 class="text-4xl font-semibold text-white md:text-5xl">

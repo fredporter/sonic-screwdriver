@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define when `uDOS-sonic-screwdriver` releases are notes-only versus when they
+Define when `sonic-screwdriver` releases are notes-only versus when they
 may attach packaging artifacts.
 
 ## Default Policy

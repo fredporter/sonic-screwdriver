@@ -1,4 +1,4 @@
-# uDOS-sonic-screwdriver Getting Started
+# sonic-screwdriver Getting Started
 
 1. Read `README.md` for the public role of Sonic.
 2. Review `docs/boundary.md` and `docs/architecture.md`.
