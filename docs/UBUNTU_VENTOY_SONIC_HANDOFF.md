@@ -3,7 +3,7 @@
 ## Purpose
 
 This document makes the current public handoff between `uDOS-ubuntu`,
-`uDOS-ventoy`, and `sonic-screwdriver` explicit.
+`sonic-ventoy`, and `sonic-screwdriver` explicit.
 
 ## Ownership Split
 
@@ -21,7 +21,7 @@ Ubuntu does not own:
 - media layout writes
 - Sonic manifest application
 
-### `uDOS-ventoy`
+### `sonic-ventoy`
 
 Ventoy owns:
 

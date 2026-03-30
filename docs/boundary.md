@@ -1,4 +1,4 @@
-# uDOS-sonic-screwdriver Boundary
+# sonic-screwdriver Boundary
 
 ## Owns
 
@@ -6,7 +6,7 @@
 - packaging and update surfaces
 - managed environment provisioning
 - deployment and machine-profile guidance
-- orchestration of `uDOS-ubuntu` profile registration and `uDOS-ventoy` template consumption
+- orchestration of `uDOS-ubuntu` profile registration and `sonic-ventoy` template consumption
 
 ## Does Not Own
 
@@ -15,7 +15,7 @@
 - persistent local-service ownership
 - private OMD product behavior
 - base image composition ownership (owned by `uDOS-ubuntu`)
-- Ventoy template policy ownership (owned by `uDOS-ventoy`)
+- Ventoy template policy ownership (owned by `sonic-ventoy`)
 
 ## Platform Rule
 

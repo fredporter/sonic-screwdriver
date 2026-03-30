@@ -1,18 +1,18 @@
 # Legal
 
 This page summarizes the public legal and attribution boundary for
-`uDOS-sonic-screwdriver`.
+`sonic-screwdriver`.
 
 ## License
 
-The repository source is licensed under the MIT license.
+The repository source is licensed under Apache 2.0.
 
 See [LICENSE](LICENSE).
 
 ## Repo Boundary
 
-`uDOS-sonic-screwdriver` is the deployment and hardware bootstrap repository in
-the repo family.
+`sonic-screwdriver` is the deployment and hardware bootstrap repository in the
+repo family.
 
 It does not become the legal owner of external runtime contracts just because it
 can deploy them. In particular:
@@ -32,7 +32,8 @@ This repo may reference:
 - package managers and upstream runtimes
 
 Those items can carry their own licenses, trademarks, and redistribution rules.
-Do not assume the MIT license in this repo overrides external asset terms.
+Do not assume the Apache 2.0 license in this repo overrides external asset
+terms.
 
 ## Trademarks and Product Names
 

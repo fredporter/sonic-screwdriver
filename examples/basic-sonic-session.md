@@ -1,7 +1,7 @@
 # Basic Sonic Session
 
 This is the smallest v2-local walkthrough for validating
-`uDOS-sonic-screwdriver` as a deployment and packaging surface.
+`sonic-screwdriver` as a deployment and packaging surface.
 
 ## Validate The Repo
 

@@ -1,4 +1,4 @@
-"""Sonic v2 helpers for uDOS-ventoy and uDOS-ubuntu integration."""
+"""Sonic v2 helpers for sonic-ventoy and uDOS-ubuntu integration."""
 
 from __future__ import annotations
 
@@ -203,7 +203,7 @@ def initialize_sonic_stick(
 ) -> Dict[str, Any]:
     resolved_repo_root = repo_root.resolve()
     resolved_stick_root = _resolve_local_path(resolved_repo_root, stick_root)
-    resolved_ventoy_repo = _resolve_repo_path(resolved_repo_root, ventoy_repo, "uDOS-ventoy")
+    resolved_ventoy_repo = _resolve_repo_path(resolved_repo_root, ventoy_repo, "sonic-ventoy")
     normalized_theme = _normalize_theme(theme)
 
     changed_files: List[str] = []
@@ -265,7 +265,7 @@ def register_ubuntu_profile(
 ) -> Dict[str, Any]:
     resolved_repo_root = repo_root.resolve()
     resolved_stick_root = _resolve_local_path(resolved_repo_root, stick_root)
-    resolved_ventoy_repo = _resolve_repo_path(resolved_repo_root, ventoy_repo, "uDOS-ventoy")
+    resolved_ventoy_repo = _resolve_repo_path(resolved_repo_root, ventoy_repo, "sonic-ventoy")
     resolved_ubuntu_repo = _resolve_repo_path(resolved_repo_root, ubuntu_repo, "uDOS-ubuntu")
 
     ventoy_config_path = resolved_stick_root / "ventoy" / "ventoy.json"
@@ -367,7 +367,7 @@ def refresh_ventoy_templates(
 ) -> Dict[str, Any]:
     resolved_repo_root = repo_root.resolve()
     resolved_stick_root = _resolve_local_path(resolved_repo_root, stick_root)
-    resolved_ventoy_repo = _resolve_repo_path(resolved_repo_root, ventoy_repo, "uDOS-ventoy")
+    resolved_ventoy_repo = _resolve_repo_path(resolved_repo_root, ventoy_repo, "sonic-ventoy")
 
     template_root, template_config = _load_template_assets(resolved_ventoy_repo)
     ventoy_config_path = resolved_stick_root / "ventoy" / "ventoy.json"
@@ -454,7 +454,7 @@ def set_boot_theme(
 ) -> Dict[str, Any]:
     resolved_repo_root = repo_root.resolve()
     resolved_stick_root = _resolve_local_path(resolved_repo_root, stick_root)
-    resolved_ventoy_repo = _resolve_repo_path(resolved_repo_root, ventoy_repo, "uDOS-ventoy")
+    resolved_ventoy_repo = _resolve_repo_path(resolved_repo_root, ventoy_repo, "sonic-ventoy")
     normalized_theme = _normalize_theme(theme)
 
     ventoy_config_path = resolved_stick_root / "ventoy" / "ventoy.json"

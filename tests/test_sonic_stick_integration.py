@@ -23,7 +23,7 @@ def _write_json(path: Path, payload: dict) -> None:
 
 def _prepare_family_repos(tmp_path: Path) -> Path:
     sonic_repo = tmp_path / "sonic-screwdriver"
-    ventoy_repo = tmp_path / "uDOS-ventoy"
+    ventoy_repo = tmp_path / "sonic-ventoy"
     ubuntu_repo = tmp_path / "uDOS-ubuntu"
 
     sonic_repo.mkdir(parents=True, exist_ok=True)

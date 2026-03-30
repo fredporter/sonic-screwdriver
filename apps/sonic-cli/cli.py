@@ -1,4 +1,4 @@
-"""uDOS-sonic-screwdriver CLI.
+"""sonic-screwdriver CLI.
 
 Usage:
   python3 apps/sonic-cli/cli.py plan --usb-device /dev/sdb
@@ -281,7 +281,7 @@ def _dispatch(argv: list[str], repo_root: Path, interactive: bool = False) -> in
         print("\033[2J\033[H", end="")
         return 0
 
-    parser = argparse.ArgumentParser(description="uDOS-sonic-screwdriver CLI")
+    parser = argparse.ArgumentParser(description="sonic-screwdriver CLI")
     sub = parser.add_subparsers(dest="cmd")
     default_repo_root = str(repo_root)
 
@@ -319,7 +319,7 @@ def _dispatch(argv: list[str], repo_root: Path, interactive: bool = False) -> in
         help="Formatting mode for partitions (full|skip). Defaults to layout file or full.",
     )
 
-    init_cmd = sub.add_parser("init", help="Initialize sonic-stick templates from uDOS-ventoy")
+    init_cmd = sub.add_parser("init", help="Initialize sonic-stick templates from sonic-ventoy")
     init_cmd.add_argument("--repo-root", default=default_repo_root)
     init_cmd.add_argument("--stick-root", default="memory/sonic/artifacts/sonic-stick")
     init_cmd.add_argument("--ventoy-repo", default=None)

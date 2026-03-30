@@ -6,7 +6,7 @@ REPO_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 REPO_PARENT="$(cd "${REPO_ROOT}/.." && pwd)"
 TMP_DIR="$(mktemp -d "${TMPDIR:-/tmp}/sonic-uv-smoke.XXXXXX")"
 STICK_ROOT="${TMP_DIR}/sonic-stick"
-VENTOY_REPO="${SONIC_VENTOY_REPO:-${REPO_PARENT}/uDOS-ventoy}"
+VENTOY_REPO="${SONIC_VENTOY_REPO:-${REPO_PARENT}/sonic-ventoy}"
 UBUNTU_REPO="${SONIC_UBUNTU_REPO:-${REPO_PARENT}/uDOS-ubuntu}"
 
 cleanup() {
@@ -21,7 +21,7 @@ if [[ "$(uname -s)" != "Linux" ]]; then
 fi
 
 if [[ ! -d "${VENTOY_REPO}" ]]; then
-  echo "ERROR uDOS-ventoy repository not found at ${VENTOY_REPO}"
+  echo "ERROR sonic-ventoy repository not found at ${VENTOY_REPO}"
   echo "Set SONIC_VENTOY_REPO to override."
   exit 1
 fi

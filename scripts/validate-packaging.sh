@@ -32,7 +32,7 @@ if [[ -n "${SHARED_PYTHON_BIN}" && -x "${SHARED_PYTHON_BIN}" ]]; then
 fi
 
 echo "==============================================="
-echo "uDOS-sonic-screwdriver Packaging Validation"
+echo "sonic-screwdriver Packaging Validation"
 echo "==============================================="
 echo "OS: $(uname -s)"
 echo "Python: $(${BASE_PYTHON_BIN} --version)"

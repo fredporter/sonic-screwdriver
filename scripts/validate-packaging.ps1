@@ -13,7 +13,7 @@ $RepoRoot = Split-Path -Parent $ScriptDir
 $VenvDir = Join-Path $env:TEMP "udos-sonic-validation-$(Get-Random)"
 
 Write-Host "==============================================="
-Write-Host "uDOS-sonic-screwdriver Packaging Validation"
+Write-Host "sonic-screwdriver Packaging Validation"
 Write-Host "==============================================="
 Write-Host "OS: $([System.Environment]::OSVersion.VersionString)"
 Write-Host "Python: $(python --version)"

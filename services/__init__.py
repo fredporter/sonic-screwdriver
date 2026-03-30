@@ -1,1 +1,1 @@
-"""Runtime services for uDOS-sonic-screwdriver."""
+"""Runtime services for sonic-screwdriver."""

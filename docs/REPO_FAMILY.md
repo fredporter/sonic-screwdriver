@@ -1,7 +1,8 @@
 
-# uDOS Repo Family
+# Sonic / uDOS Family
 
-uDOS v2 is a multi-repo architecture.
+The current public Sonic split is a small multi-repo architecture maintained
+separately from the earlier `uDOS-family` collection.
 
 ## Runtime layer
 
@@ -24,12 +25,23 @@ uDOS-docs
 
 ## Deployment
 
-uDOS-sonic-screwdriver  
+sonic-screwdriver  
+sonic-ventoy  
 uDOS-alpine  
 
 ## Development
 
 uDOS-dev  
+
+## Documentation
+
+Family-wide reference material should be routed through the public GitHub Pages
+family library index. Repo-local docs in `sonic-screwdriver` and
+`sonic-ventoy` should stay focused on Sonic-owned deployment and boot-media
+responsibilities.
+
+- docs repo: `https://github.com/fredporter/uDOS-docs/`
+- docs index: `https://fredporter.github.io/uDOS-docs/`
 
 ## Private Apps
 

@@ -1,4 +1,4 @@
-"""uDOS-sonic-screwdriver manifest utilities."""
+"""sonic-screwdriver manifest utilities."""
 
 import json
 from dataclasses import asdict, dataclass, field

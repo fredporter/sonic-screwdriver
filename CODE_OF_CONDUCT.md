@@ -1,6 +1,6 @@
 # Code of Conduct
 
-`uDOS-sonic-screwdriver` is committed to a respectful, constructive, and
+`sonic-screwdriver` is committed to a respectful, constructive, and
 welcoming project environment.
 
 ## Our Standard
@@ -47,4 +47,4 @@ channel where possible, with enough context to review the incident.
 ## Attribution
 
 This file is informed by the Contributor Covenant community standard and adapted
-for the smaller governance surface of `uDOS-sonic-screwdriver`.
+for the smaller governance surface of `sonic-screwdriver`.

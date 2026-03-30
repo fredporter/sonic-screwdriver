@@ -1,6 +1,6 @@
 # Contributors
 
-This file records the public contributor surface for `uDOS-sonic-screwdriver`.
+This file records the public contributor surface for `sonic-screwdriver`.
 
 ## Maintainer
 
@@ -11,7 +11,7 @@ This file records the public contributor surface for `uDOS-sonic-screwdriver`.
 Sonic is a curated public repo. Contributions should:
 
 - stay aligned to Sonic's deployment and hardware-bootstrap scope
-- respect the `uDOS-core` / `uDOS-wizard` / `uDOS-sonic-screwdriver` /
+- respect the `uDOS-core` / `uDOS-wizard` / `sonic-screwdriver` /
   `uHOME-server` repo boundary
 - document breaking changes in `README.md` and `docs/`
 - follow [CONTRIBUTING.md](CONTRIBUTING.md)

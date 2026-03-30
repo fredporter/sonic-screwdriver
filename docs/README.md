@@ -1,6 +1,6 @@
 # Sonic Docs
 
-This directory is the current reference surface for `uDOS-sonic-screwdriver`.
+This directory is the current reference surface for `sonic-screwdriver`.
 
 ## Current v2 Docs
 
@@ -13,6 +13,14 @@ This directory is the current reference surface for `uDOS-sonic-screwdriver`.
 - [REPO_FAMILY.md](REPO_FAMILY.md)
 - [DEPLOYMENT_MODEL.md](DEPLOYMENT_MODEL.md)
 - [MACHINE_PROFILES.md](MACHINE_PROFILES.md)
+- [UBUNTU_VENTOY_SONIC_HANDOFF.md](UBUNTU_VENTOY_SONIC_HANDOFF.md)
+
+## Legal And Public Positioning
+
+- [../ABOUT.md](../ABOUT.md)
+- [../LEGAL.md](../LEGAL.md)
+- [../DISCLAIMER.md](../DISCLAIMER.md)
+- [../TERMS.md](../TERMS.md)
 
 ## Archived v1 Reference
 

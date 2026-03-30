@@ -17,4 +17,4 @@ Sonic does not locally own:
 - staged install-plan semantics
 
 Use this module page to explain the boundary, not to reintroduce duplicate
-contract code into `uDOS-sonic-screwdriver`.
+contract code into `sonic-screwdriver`.

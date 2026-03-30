@@ -1,6 +1,7 @@
 # sonic-screwdriver
 
-Sonic Screwdriver is the deployment layer of the uDOS v2 architecture.
+Sonic Screwdriver is the deployment, installation, and recovery layer of the
+public Sonic/uDOS architecture.
 
 It is responsible for:
 
@@ -18,12 +19,14 @@ The current repo split is:
 
 - `uDOS-core` = deterministic runtime contracts and execution semantics
 - `uDOS-shell` = interactive shell and workspace interaction surfaces
-- `uDOS-wizard` = network, provider, MCP, and assist surfaces
+- `uDOS-wizard` = provider, MCP, assist, and remote publishing adapters
 - `sonic-screwdriver` = deployment, provisioning, hardware bootstrap
-- `uHOME-server` = canonical `uHOME` runtime, bundle, preflight, and install-plan contracts
+- `uDOS-ubuntu` = always-on command-centre runtime
+- `uHOME-server` = downstream `uHOME` service stream
 
-For `uHOME`-specific contracts, the source of truth is the sibling
-`uHOME-server` repository, not this one.
+For family runtime contracts, the source of truth is the sibling
+`uDOS-ubuntu` repository. For `uHOME`-specific downstream services, use the
+`uHOME-server` repository.
 
 ## What Sonic Owns
 
@@ -40,14 +43,17 @@ Current active surfaces in this repo:
 - browser UI for planning and catalog inspection
 - device catalog and manifest validation
 - explicit live/install/recovery product docs and demo surfaces
+- Sonic-owned CLI/TUI/ThinUI deployment surfaces
 
 ## What Sonic Does Not Own
 
 Sonic does not own:
 
-- the long-running `uHOME` runtime
+- the long-running uDOS command centre
+- the family command-centre runtime
 - `uHOME` bundle/preflight/install-plan source of truth
 - Wizard-managed beacon, Home Assistant, or network control surfaces
+- canonical vault truth or always-on runtime scheduling
 
 This repo no longer carries local `uHOME` bundle contract code. Use the sibling
 `uHOME-server` repo directly for `uHOME` bundle, preflight, and install-plan
@@ -197,9 +203,9 @@ For a one-command runner on Ubuntu/Alpine, use
 ## Ubuntu And Ventoy Integration (v2.0.6 Round B)
 
 Sonic now exposes an explicit integration lane for the `uDOS-ubuntu` profile
-and `uDOS-ventoy` boot templates.
+and `sonic-ventoy` boot templates.
 
-Initialize a stick workspace from `uDOS-ventoy` templates:
+Initialize a stick workspace from `sonic-ventoy` templates:
 
 ```bash
 sonic init \
@@ -280,6 +286,11 @@ bash scripts/demo-live-install-recovery.sh
 For broader platform learning, use the wider uDOS v2 family docs instead of
 duplicating the same pathway structure in Sonic. Start with `uDOS-docs`,
 `uDOS-core`, and `uDOS-wizard`.
+
+Public docs entry points:
+
+- repo: `https://github.com/fredporter/uDOS-docs/`
+- Pages index: `https://fredporter.github.io/uDOS-docs/`
 
 If you prefer repo-local execution without installing entrypoints, the direct
 CLI path remains `python3 apps/sonic-cli/cli.py`, and the starter launch path is

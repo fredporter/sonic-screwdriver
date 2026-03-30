@@ -96,11 +96,11 @@ jobs:
     - name: Checkout sonic-screwdriver
       uses: actions/checkout@v4
 
-    - name: Checkout uDOS-ventoy
+    - name: Checkout sonic-ventoy
       uses: actions/checkout@v4
       with:
-        repository: fredporter/uDOS-ventoy
-        path: uDOS-ventoy
+        repository: fredporter/sonic-ventoy
+        path: sonic-ventoy
 
     - name: Checkout uDOS-ubuntu
       uses: actions/checkout@v4
@@ -121,7 +121,7 @@ jobs:
 
     - name: Run Ubuntu/Ventoy integration smoke
       env:
-        SONIC_VENTOY_REPO: ${{ github.workspace }}/uDOS-ventoy
+        SONIC_VENTOY_REPO: ${{ github.workspace }}/sonic-ventoy
         SONIC_UBUNTU_REPO: ${{ github.workspace }}/uDOS-ubuntu
       run: |
         bash scripts/smoke/ubuntu-ventoy-integration-smoke.sh
