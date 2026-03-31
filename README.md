@@ -28,6 +28,14 @@ For family runtime contracts, the source of truth is the sibling
 `uDOS-ubuntu` repository. For `uHOME`-specific downstream services, use the
 `uHOME-server` repository.
 
+## uDOS family install contract
+
+Sonic is the **first-entry** deployment lane for the public uDOS shape. Canonical
+install order, `~/.udos/` path rules, Docker boundary, and Sonic/Ventoy split
+are specified in the **`uDOS-dev`** repository: **`docs/foundation-distribution.md`**
+(check out the `uDOS-family` tree per its `CURSOR_HANDOVER_PLAN.md`). Lane-2
+automated verification from Ubuntu: **`uDOS-ubuntu/scripts/foundation-distribution-workspace-proof.sh`**.
+
 ## What Sonic Owns
 
 Sonic owns the deployment lane that takes a reviewed profile and applies it to
