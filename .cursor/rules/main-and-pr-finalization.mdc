@@ -7,4 +7,5 @@ alwaysApply: true
 
 - **`main`** is the integration branch. **Default to commits on `main`**; do not create branches out of habit.
 - Use a **short-lived** branch only for a clear reason (risky change, long WIP, deliberate review). Delete it after merge.
+- **GitHub PR-only rules** on `main` are optional for solo work; direct push or admin bypass is fine—see **`uDOS-dev`** `docs/github-actions-family-contract.md` § Branch protection and solo maintenance.
 - Family-wide wording: **`uDOS-dev`** `docs/pr-checklist.md` and `.cursor/rules/main-and-pr-finalization.mdc` when that repo is in the workspace.
