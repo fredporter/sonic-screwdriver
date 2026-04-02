@@ -69,7 +69,10 @@ work.
 
 ## First-Run Preflight (Any OS)
 
-Run the repo preflight entrypoint first:
+**Operator experience (simpler path, planned):** see **`docs/operator-first-run-plan.md`**
+(one-command setup + launcher + dependency checks + startup health).
+
+Run the repo preflight entrypoint first (deeper validation; developers / CI):
 
 ```bash
 bash scripts/first-run-preflight.sh
