@@ -1,6 +1,6 @@
 # Sonic Screwdriver — TUI Charter
 
-**Canonical pack (Classic Modern + ThinUI + Sonic alignment):** when you have **`uDOS-docs`** checked out, see **`docs/classic-modern-mvp-0.1/`** (README + `docs/sonic-tui-charter.md` there). This file is the same charter, kept in-repo so Sonic implementation work cannot drift without touching the boundary.
+**Canonical charter text:** `uDOS-docs/docs/classic-modern-mvp-0.1/docs/sonic-tui-charter.md`. This file is a **mirror** for Sonic implementation work; keep it aligned when the boundary changes.
 
 ---
 
