@@ -14,7 +14,7 @@ sonic-screwdriver is a terminal-only fixer/installer/setup tool; it must never r
 
 ### In
 
-- install
+- install — including applying the **Classic Modern uDOS-host profile** (canonical: `uDOS-docs/docs/classic-modern-mvp-0.1/docs/classic-modern-host-profile.md`) as the **default** outcome when Sonic is used to install the family **Ubuntu baseline** host, unless the operator explicitly selects a different profile. This is intentionally **not** “whatever stock GNOME looks like”; it is the de-modernised host posture the family ships for uDOS-host.
 - repair
 - environment setup
 - health checks
