@@ -29,7 +29,7 @@ Host OS:
 
 Sibling repos expected next to `sonic-screwdriver`:
 
-- `uDOS-ventoy`
+- `sonic-ventoy`
 - `uDOS-ubuntu`
 - `uHOME-server`
 - `uDOS-wizard`
@@ -203,8 +203,8 @@ If payload application fails:
 If Ubuntu/Ventoy smoke fails:
 
 - verify sibling repo paths
-- verify profile manifest exists in `../uDOS-ventoy/profiles/udos-ubuntu/manifest.json`
-- verify template files exist in `../uDOS-ventoy/templates/ventoy`
+- verify profile manifest exists in `../sonic-ventoy/profiles/udos-ubuntu/manifest.json`
+- verify template files exist in `../sonic-ventoy/templates/ventoy`
 
 ## What macOS Already Proved
 
