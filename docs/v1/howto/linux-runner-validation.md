@@ -30,7 +30,7 @@ Host OS:
 Sibling repos expected next to `sonic-screwdriver`:
 
 - `sonic-ventoy`
-- `uDOS-ubuntu`
+- `uDOS-host`
 - `uHOME-server`
 - `uDOS-wizard`
 

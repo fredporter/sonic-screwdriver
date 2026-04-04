@@ -1,4 +1,4 @@
-"""Sonic v2 helpers for sonic-ventoy and uDOS-ubuntu integration."""
+"""Sonic v2 helpers for sonic-ventoy and uDOS-host integration."""
 
 from __future__ import annotations
 
@@ -266,7 +266,7 @@ def register_ubuntu_profile(
     resolved_repo_root = repo_root.resolve()
     resolved_stick_root = _resolve_local_path(resolved_repo_root, stick_root)
     resolved_ventoy_repo = _resolve_repo_path(resolved_repo_root, ventoy_repo, "sonic-ventoy")
-    resolved_ubuntu_repo = _resolve_repo_path(resolved_repo_root, ubuntu_repo, "uDOS-ubuntu")
+    resolved_ubuntu_repo = _resolve_repo_path(resolved_repo_root, ubuntu_repo, "uDOS-host")
 
     ventoy_config_path = resolved_stick_root / "ventoy" / "ventoy.json"
     if not ventoy_config_path.exists():

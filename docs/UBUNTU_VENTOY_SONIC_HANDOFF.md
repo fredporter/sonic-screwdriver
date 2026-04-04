@@ -2,12 +2,12 @@
 
 ## Purpose
 
-This document makes the current public handoff between `uDOS-ubuntu`,
+This document makes the current public handoff between `uDOS-host`,
 `sonic-ventoy`, and `sonic-screwdriver` explicit.
 
 ## Ownership Split
 
-### `uDOS-ubuntu`
+### `uDOS-host`
 
 Ubuntu owns:
 

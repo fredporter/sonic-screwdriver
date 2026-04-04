@@ -22,7 +22,7 @@ def test_ubuntu_ventoy_smoke_script_enforces_repo_boundaries() -> None:
     assert "SONIC_VENTOY_REPO" in contents
     assert "SONIC_UBUNTU_REPO" in contents
     assert "sonic-ventoy repository not found" in contents
-    assert "uDOS-ubuntu repository not found" in contents
+    assert "uDOS-host repository not found" in contents
 
 
 def test_ubuntu_ventoy_smoke_script_checks_user_data_preservation() -> None:

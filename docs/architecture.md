@@ -10,7 +10,7 @@ environment tooling for the public family.
 - `modules/` marks extension and boundary lanes
 - `docs/` explains deployment ownership and family alignment
 - `scripts/run-sonic-checks.sh` is the activation validation entrypoint
-- `sonic init/add/update/theme` commands integrate `sonic-ventoy` templates and `uDOS-ubuntu` profile metadata
+- `sonic init/add/update/theme` commands integrate `sonic-ventoy` templates and `uDOS-host` profile metadata
 
 ## Design Rule
 

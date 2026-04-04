@@ -18,6 +18,6 @@ def test_test_workflow_checks_out_sibling_repos_for_smoke_job() -> None:
     contents = TEST_WORKFLOW.read_text(encoding="utf-8")
 
     assert "repository: fredporter/sonic-ventoy" in contents
-    assert "repository: fredporter/uDOS-ubuntu" in contents
+    assert "repository: fredporter/uDOS-host" in contents
     assert "SONIC_VENTOY_REPO" in contents
     assert "SONIC_UBUNTU_REPO" in contents

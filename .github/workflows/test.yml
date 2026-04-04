@@ -102,11 +102,11 @@ jobs:
         repository: fredporter/sonic-ventoy
         path: sonic-ventoy
 
-    - name: Checkout uDOS-ubuntu
+    - name: Checkout uDOS-host
       uses: actions/checkout@v4
       with:
-        repository: fredporter/uDOS-ubuntu
-        path: uDOS-ubuntu
+        repository: fredporter/uDOS-host
+        path: uDOS-host
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -122,7 +122,7 @@ jobs:
     - name: Run Ubuntu/Ventoy integration smoke
       env:
         SONIC_VENTOY_REPO: ${{ github.workspace }}/sonic-ventoy
-        SONIC_UBUNTU_REPO: ${{ github.workspace }}/uDOS-ubuntu
+        SONIC_UBUNTU_REPO: ${{ github.workspace }}/uDOS-host
       run: |
         bash scripts/smoke/ubuntu-ventoy-integration-smoke.sh
 

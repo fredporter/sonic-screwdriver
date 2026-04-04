@@ -6,7 +6,7 @@
 - packaging and update surfaces
 - managed environment provisioning
 - deployment and machine-profile guidance
-- orchestration of `uDOS-ubuntu` profile registration and `sonic-ventoy` template consumption
+- orchestration of `uDOS-host` profile registration and `sonic-ventoy` template consumption
 
 ## Does Not Own
 
@@ -14,7 +14,7 @@
 - public provider and MCP ownership
 - persistent local-service ownership
 - private OMD product behavior
-- base image composition ownership (owned by `uDOS-ubuntu`)
+- base image composition ownership (owned by `uDOS-host`)
 - Ventoy template policy ownership (owned by `sonic-ventoy`)
 
 ## Platform Rule

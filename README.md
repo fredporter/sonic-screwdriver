@@ -21,11 +21,11 @@ The current repo split is:
 - `uDOS-shell` = interactive shell and workspace interaction surfaces
 - `uDOS-wizard` = provider, MCP, assist, and remote publishing adapters
 - `sonic-screwdriver` = deployment, provisioning, hardware bootstrap
-- `uDOS-ubuntu` = always-on command-centre runtime
+- `uDOS-host` = always-on command-centre runtime
 - `uHOME-server` = downstream `uHOME` service stream
 
 For family runtime contracts, the source of truth is the sibling
-`uDOS-ubuntu` repository. For `uHOME`-specific downstream services, use the
+`uDOS-host` repository. For `uHOME`-specific downstream services, use the
 `uHOME-server` repository.
 
 ## uDOS family install contract
@@ -34,7 +34,7 @@ Sonic is the **first-entry** deployment lane for the public uDOS shape. Canonica
 install order, `~/.udos/` path rules, Docker boundary, and Sonic/Ventoy split
 are specified in the **`uDOS-dev`** repository: **`docs/foundation-distribution.md`**
 (check out the `uDOS-family` tree per its `CURSOR_HANDOVER_PLAN.md`). Lane-2
-automated verification from Ubuntu: **`uDOS-ubuntu/scripts/foundation-distribution-workspace-proof.sh`**.
+automated verification from Ubuntu: **`uDOS-host/scripts/foundation-distribution-workspace-proof.sh`**.
 
 ## What Sonic Owns
 
@@ -221,7 +221,7 @@ For a one-command runner on Ubuntu/Alpine, use
 
 ## Ubuntu And Ventoy Integration (v2.0.6 Round B)
 
-Sonic now exposes an explicit integration lane for the `uDOS-ubuntu` profile
+Sonic now exposes an explicit integration lane for the `uDOS-host` profile
 and `sonic-ventoy` boot templates.
 
 Initialize a stick workspace from `sonic-ventoy` templates:

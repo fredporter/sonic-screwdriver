@@ -318,7 +318,7 @@ def _dispatch(argv: list[str], repo_root: Path, interactive: bool = False) -> in
     init_cmd.add_argument("--stick-size", default="128gb", choices=["64gb", "128gb"])
     init_cmd.add_argument("--without-persist", action="store_true")
 
-    add_cmd = sub.add_parser("add", help="Register image metadata from uDOS-ubuntu profile assumptions")
+    add_cmd = sub.add_parser("add", help="Register image metadata from uDOS-host profile assumptions")
     add_cmd.add_argument("profile", nargs="?", default="udos-ubuntu")
     add_cmd.add_argument("--repo-root", default=default_repo_root)
     add_cmd.add_argument("--stick-root", default="memory/sonic/artifacts/sonic-stick")

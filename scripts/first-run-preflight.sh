@@ -141,8 +141,8 @@ fi
 echo "[5/5] Ubuntu/Ventoy integration smoke"
 if [[ "${os_name}" != "Linux" ]]; then
   echo "Skipping Ubuntu/Ventoy smoke: Linux required for init flow"
-elif [[ ! -d "${REPO_ROOT}/../sonic-ventoy" || ! -d "${REPO_ROOT}/../uDOS-ubuntu" ]]; then
-  echo "Skipping Ubuntu/Ventoy smoke: sibling repos not found at ../sonic-ventoy and ../uDOS-ubuntu"
+elif [[ ! -d "${REPO_ROOT}/../sonic-ventoy" || ! -d "${REPO_ROOT}/../uDOS-host" ]]; then
+  echo "Skipping Ubuntu/Ventoy smoke: sibling repos not found at ../sonic-ventoy and ../uDOS-host"
 else
   bash "${REPO_ROOT}/scripts/smoke/ubuntu-ventoy-integration-smoke.sh"
 fi

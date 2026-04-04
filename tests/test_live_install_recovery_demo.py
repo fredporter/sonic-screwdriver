@@ -29,7 +29,7 @@ def test_product_doc_references_handoff_and_evidence() -> None:
 def test_handoff_doc_keeps_ownership_split_explicit() -> None:
     contents = HANDOFF_DOC.read_text(encoding="utf-8")
 
-    assert "uDOS-ubuntu" in contents
+    assert "uDOS-host" in contents
     assert "sonic-ventoy" in contents
     assert "sonic-screwdriver" in contents
     assert "Sonic owns:" in contents

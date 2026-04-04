@@ -1,0 +1,12 @@
+
+> sonic-ui@1.5.5 dev
+> vite --host 127.0.0.1 --port 5173
+
+Forced re-optimization of dependencies
+
+  VITE v5.4.21  ready in 326 ms
+
+  ➜  Local:   http://127.0.0.1:5173/
+10:04:09 pm [vite] hmr update /src/App.svelte, /src/app.css
+10:04:13 pm [vite] hmr update /src/App.svelte, /src/app.css
+10:04:19 pm [vite] page reload index.html

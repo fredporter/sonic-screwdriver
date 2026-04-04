@@ -24,7 +24,7 @@ def _write_json(path: Path, payload: dict) -> None:
 def _prepare_family_repos(tmp_path: Path) -> Path:
     sonic_repo = tmp_path / "sonic-screwdriver"
     ventoy_repo = tmp_path / "sonic-ventoy"
-    ubuntu_repo = tmp_path / "uDOS-ubuntu"
+    ubuntu_repo = tmp_path / "uDOS-host"
 
     sonic_repo.mkdir(parents=True, exist_ok=True)
     ubuntu_repo.mkdir(parents=True, exist_ok=True)
@@ -52,7 +52,7 @@ def _prepare_family_repos(tmp_path: Path) -> Path:
         },
     )
 
-    _write_text(ubuntu_repo / "README.md", "# uDOS-ubuntu\n")
+    _write_text(ubuntu_repo / "README.md", "# uDOS-host\n")
     return sonic_repo
 
 
